@@ -3,11 +3,11 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
-import { ChevronRight } from "lucide-react";
+import { ChevronRight, ShieldCheck } from "lucide-react";
 
 const slides = [
   {
-    image: "/hero1.webp",
+    image: "/hero1-new.jpg",
     title: "Secure. Reliable. Connected.",
     subtitle: "Powering your Enterprise Network with Ultracom Networks",
     cta1: "Explore Services",
@@ -75,11 +75,14 @@ export default function Hero() {
                 className="object-cover"
                 priority
               />
-              <div className="absolute inset-0 bg-gradient-to-r from-slate-900/70 via-slate-900/40 to-slate-900/20" />
+              <div className="absolute inset-0 bg-gradient-to-r from-slate-900/85 via-slate-900/55 to-slate-900/25" />
             </motion.div>
           ) : null
         )}
       </AnimatePresence>
+
+      {/* Signature accent glow */}
+      <div className="absolute top-1/3 left-0 w-[500px] h-[500px] bg-blue-500/20 rounded-full blur-[120px] pointer-events-none" />
 
       {/* Content */}
       <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 min-h-[85vh] sm:min-h-screen flex items-center py-20 sm:py-28">
@@ -92,6 +95,11 @@ export default function Hero() {
             transition={{ duration: 0.6 }}
             className="space-y-6 text-white max-w-xl"
           >
+            <div className="inline-flex items-center gap-2 bg-white/10 border border-white/20 backdrop-blur-sm text-blue-200 px-4 py-2 rounded-full text-xs font-semibold tracking-wide">
+              <ShieldCheck className="w-3.5 h-3.5" />
+              PAKISTAN&apos;S #1 ENTERPRISE NETWORK
+            </div>
+
             <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold leading-tight tracking-tight">
               {slides[current].title}
             </h1>
@@ -102,16 +110,18 @@ export default function Hero() {
             <div className="flex flex-col sm:flex-row gap-3 pt-4">
               <motion.a
                 href="/services"
+                whileHover={{ y: -2 }}
                 whileTap={{ scale: 0.98 }}
-                className="inline-flex items-center justify-center px-7 py-3.5 bg-blue-600 text-white font-semibold text-base rounded-lg hover:bg-blue-700 transition-colors duration-200 group"
+                className="inline-flex items-center justify-center px-7 py-3.5 bg-blue-600 text-white font-semibold text-base rounded-lg shadow-lg shadow-blue-600/40 hover:bg-blue-700 hover:shadow-xl hover:shadow-blue-600/50 transition-all duration-200 group"
               >
                 {slides[current].cta1}
                 <ChevronRight className="ml-1.5 w-5 h-5 group-hover:translate-x-1 transition-transform" />
               </motion.a>
               <motion.a
                 href="/contactus"
+                whileHover={{ y: -2 }}
                 whileTap={{ scale: 0.98 }}
-                className="inline-flex items-center justify-center px-7 py-3.5 border border-white/40 text-white font-semibold text-base rounded-lg hover:bg-white/10 transition-colors duration-200"
+                className="inline-flex items-center justify-center px-7 py-3.5 border border-white/40 text-white font-semibold text-base rounded-lg backdrop-blur-sm hover:bg-white/10 hover:border-white/60 transition-all duration-200"
               >
                 {slides[current].cta2}
               </motion.a>

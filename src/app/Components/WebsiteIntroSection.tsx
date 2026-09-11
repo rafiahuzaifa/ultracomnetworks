@@ -24,6 +24,7 @@ export default function WebsiteIntroSection() {
 
   return (
     <section className="relative w-full py-20 sm:py-28 bg-white overflow-hidden">
+      <div className="absolute top-0 left-0 w-[500px] h-[500px] bg-blue-500/5 rounded-full blur-[120px] pointer-events-none"></div>
       <div className="max-w-7xl mx-auto relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-14 lg:gap-24 px-6 lg:px-10">
 
@@ -63,7 +64,7 @@ export default function WebsiteIntroSection() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: 0.08 * index }}
-                  className="flex items-center gap-3 p-3 rounded-xl border border-slate-200 hover:border-blue-200 transition-colors duration-200"
+                  className="flex items-center gap-3 p-3 rounded-xl border border-slate-200 hover:border-blue-200 hover:shadow-md hover:-translate-y-0.5 transition-all duration-200"
                 >
                   <div className="p-1.5 bg-blue-50 rounded-lg text-blue-600">
                     {feature.icon}
@@ -95,7 +96,7 @@ export default function WebsiteIntroSection() {
             <div className="flex flex-col sm:flex-row gap-3 pt-2">
               <Link
                 href="/website-development"
-                className="px-7 py-3.5 bg-blue-600 text-white font-semibold rounded-xl hover:bg-blue-700 transition-colors duration-200 flex items-center justify-center gap-2 group"
+                className="px-7 py-3.5 bg-blue-600 text-white font-semibold rounded-xl shadow-lg shadow-blue-600/25 hover:bg-blue-700 hover:shadow-xl hover:shadow-blue-600/35 hover:-translate-y-0.5 transition-all duration-200 flex items-center justify-center gap-2 group"
               >
                 <span>Explore Our Services</span>
                 <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
@@ -103,7 +104,7 @@ export default function WebsiteIntroSection() {
 
               <Link
                 href="/contactus"
-                className="px-7 py-3.5 bg-white text-slate-700 font-semibold rounded-xl border border-slate-200 hover:border-blue-300 transition-colors duration-200 flex items-center justify-center gap-2"
+                className="px-7 py-3.5 bg-white text-slate-700 font-semibold rounded-xl border border-slate-200 hover:border-blue-300 hover:shadow-md hover:-translate-y-0.5 transition-all duration-200 flex items-center justify-center gap-2"
               >
                 <TrendingUp className="w-5 h-5 text-blue-600" />
                 <span>Get Free Audit</span>
@@ -120,7 +121,7 @@ export default function WebsiteIntroSection() {
             className="relative pb-8 sm:pb-0"
           >
             {/* Main Image Container */}
-            <div className="relative w-full h-[380px] sm:h-[460px] rounded-2xl overflow-hidden shadow-xl">
+            <div className="relative w-full h-[380px] sm:h-[460px] rounded-2xl overflow-hidden shadow-2xl ring-1 ring-black/5">
               <Image
                 src="/webdevlopment2.jpg"
                 alt="Website Development"
@@ -153,7 +154,7 @@ export default function WebsiteIntroSection() {
 
             {/* Feature callouts — stacked cards below image on mobile, floating on desktop */}
             <div className="mt-4 sm:mt-0 grid grid-cols-2 gap-3 sm:contents">
-              <div className="sm:absolute sm:-left-6 sm:-top-6 bg-white p-4 rounded-xl shadow-lg border border-slate-100">
+              <div className="sm:absolute sm:-left-6 sm:-top-6 bg-white p-4 rounded-xl shadow-xl border border-slate-100 hover:-translate-y-1 transition-transform duration-300">
                 <div className="flex items-center gap-2.5 mb-1.5">
                   <div className="p-1.5 bg-green-50 rounded-lg">
                     <CheckCircle className="w-4 h-4 text-green-600" />
@@ -163,7 +164,7 @@ export default function WebsiteIntroSection() {
                 <div className="text-xs text-slate-600 hidden sm:block">Built-in SEO optimization for better rankings</div>
               </div>
 
-              <div className="sm:absolute sm:-right-6 sm:-bottom-6 bg-white p-4 rounded-xl shadow-lg border border-slate-100">
+              <div className="sm:absolute sm:-right-6 sm:-bottom-6 bg-white p-4 rounded-xl shadow-xl border border-slate-100 hover:-translate-y-1 transition-transform duration-300">
                 <div className="flex items-center gap-2.5 mb-1.5">
                   <div className="p-1.5 bg-purple-50 rounded-lg">
                     <Zap className="w-4 h-4 text-purple-600" />
@@ -192,7 +193,7 @@ export default function WebsiteIntroSection() {
           ].map((stat, index) => (
             <div
               key={index}
-              className="text-center p-5 sm:p-6 rounded-2xl bg-slate-50 border border-slate-200 hover:border-blue-200 transition-colors duration-300"
+              className="text-center p-5 sm:p-6 rounded-2xl bg-slate-50 border border-slate-200 hover:border-blue-200 hover:shadow-lg hover:-translate-y-1 hover:bg-white transition-all duration-300"
             >
               <div className="text-2xl sm:text-3xl font-bold text-slate-900">
                 {stat.value}

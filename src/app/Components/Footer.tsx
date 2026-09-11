@@ -21,7 +21,9 @@ export default function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="relative bg-slate-900 text-white pt-16 sm:pt-20 pb-10 font-geist-sans">
+    <footer className="relative bg-slate-900 text-white pt-16 sm:pt-20 pb-10 font-geist-sans overflow-hidden">
+      <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-blue-500/40 to-transparent"></div>
+      <div className="absolute -top-40 left-1/2 -translate-x-1/2 w-[600px] h-[400px] bg-blue-500/5 rounded-full blur-[120px] pointer-events-none"></div>
       <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 relative z-10">
 
         {/* Main Footer Content */}
@@ -185,7 +187,7 @@ export default function Footer() {
                     href={social.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="p-2.5 bg-white/5 rounded-lg border border-white/10 hover:bg-white/10 hover:border-white/20 transition-colors duration-200"
+                    className="p-2.5 bg-white/5 rounded-lg border border-white/10 hover:bg-blue-600 hover:border-blue-500 hover:-translate-y-0.5 transition-all duration-200"
                   >
                     <social.icon className="w-4.5 h-4.5 text-slate-300" />
                   </a>
@@ -197,7 +199,7 @@ export default function Footer() {
 
         {/* Trust Badges */}
         <div className="mb-10 sm:mb-12">
-          <div className="flex flex-wrap items-center justify-center gap-6 sm:gap-8 p-5 sm:p-6 bg-white/5 rounded-2xl border border-white/10">
+          <div className="flex flex-wrap items-center justify-center gap-6 sm:gap-8 p-5 sm:p-6 bg-white/5 rounded-2xl border border-white/10 shadow-inner">
             <div className="flex items-center gap-3">
               <Award className="w-5 h-5 text-blue-400" />
               <div>
@@ -250,7 +252,7 @@ export default function Footer() {
 
             <Link
               href="/contactus"
-              className="px-6 py-2.5 bg-blue-600 rounded-xl font-semibold hover:bg-blue-700 transition-colors duration-200 flex items-center gap-2 group text-sm"
+              className="px-6 py-2.5 bg-blue-600 rounded-xl font-semibold shadow-lg shadow-blue-600/25 hover:bg-blue-700 hover:shadow-xl hover:shadow-blue-600/35 hover:-translate-y-0.5 transition-all duration-200 flex items-center gap-2 group text-sm"
             >
               Get In Touch
               <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />

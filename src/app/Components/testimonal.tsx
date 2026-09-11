@@ -142,6 +142,8 @@ export default function UltracomTestimonials() {
 
   return (
     <section className="relative bg-slate-900 text-white py-20 sm:py-28 overflow-hidden">
+      <div className="absolute top-0 left-1/3 w-[500px] h-[500px] bg-blue-500/10 rounded-full blur-[130px] pointer-events-none"></div>
+      <div className="absolute bottom-0 right-1/4 w-[400px] h-[400px] bg-blue-500/5 rounded-full blur-[120px] pointer-events-none"></div>
       <div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
         {/* Header Section */}
         <motion.div
@@ -206,7 +208,7 @@ export default function UltracomTestimonials() {
               { value: "99.8%", label: "Satisfaction Rate", icon: Award },
               { value: "24/7", label: "Support Available", icon: Zap },
             ].map((stat, index) => (
-              <div key={index} className="bg-white/5 rounded-2xl p-4 sm:p-6 border border-white/10">
+              <div key={index} className="bg-white/5 rounded-2xl p-4 sm:p-6 border border-white/10 hover:border-blue-500/30 hover:bg-white/[0.07] hover:-translate-y-1 transition-all duration-300">
                 <div className="flex items-center gap-2.5 sm:gap-3 mb-2 sm:mb-3">
                   <div className="p-1.5 sm:p-2 bg-blue-500/15 rounded-lg">
                     <stat.icon className="w-4 h-4 sm:w-5 sm:h-5 text-blue-400" />
@@ -257,7 +259,7 @@ export default function UltracomTestimonials() {
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0 }}
                   transition={{ duration: 0.4, delay: index * 0.08 }}
-                  className="flex-none w-[300px] sm:w-96 lg:w-[400px] bg-slate-800 border border-slate-700 rounded-2xl p-6 sm:p-7 snap-center hover:border-slate-600 transition-colors duration-300"
+                  className="flex-none w-[300px] sm:w-96 lg:w-[400px] bg-slate-800 border border-slate-700 rounded-2xl p-6 sm:p-7 snap-center hover:border-blue-500/40 hover:shadow-2xl hover:shadow-blue-500/10 transition-all duration-300"
                 >
                   <Quote className="w-9 h-9 text-blue-500/60 mb-5" />
 
@@ -332,7 +334,7 @@ export default function UltracomTestimonials() {
               Join hundreds of satisfied clients who trust Ultracom Networks for their digital transformation journey.
             </p>
             <div className="flex flex-col sm:flex-row gap-3 justify-center">
-              <button className="px-7 py-3.5 bg-blue-600 text-white font-semibold rounded-xl hover:bg-blue-700 transition-colors duration-200 flex items-center justify-center gap-2 group">
+              <button className="px-7 py-3.5 bg-blue-600 text-white font-semibold rounded-xl shadow-lg shadow-blue-600/25 hover:bg-blue-700 hover:shadow-xl hover:shadow-blue-600/35 hover:-translate-y-0.5 transition-all duration-200 flex items-center justify-center gap-2 group">
                 Get Free Consultation
                 <ChevronRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
               </button>

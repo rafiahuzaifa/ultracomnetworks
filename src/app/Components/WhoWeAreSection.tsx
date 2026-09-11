@@ -47,6 +47,7 @@ export default function WhoWeAreSection() {
 
   return (
     <section className="relative w-full py-20 sm:py-28 bg-slate-50 overflow-hidden">
+      <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-blue-500/5 rounded-full blur-[120px] pointer-events-none"></div>
       <div className="max-w-7xl mx-auto relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-14 lg:gap-24 px-6 lg:px-10">
           
@@ -98,10 +99,10 @@ export default function WhoWeAreSection() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: 0.1 * index }}
-                  className="p-4 rounded-2xl bg-white border border-slate-200 hover:border-blue-200 hover:shadow-md transition-all duration-300"
+                  className="group p-4 rounded-2xl bg-white border border-slate-200 hover:border-blue-200 hover:shadow-lg hover:-translate-y-1 transition-all duration-300"
                 >
                   <div className="flex items-center gap-3 mb-2">
-                    <div className="p-2 bg-blue-50 rounded-lg text-blue-600">
+                    <div className="p-2 bg-blue-50 rounded-lg text-blue-600 group-hover:bg-blue-600 group-hover:text-white transition-colors">
                       {value.icon}
                     </div>
                     <h3 className="font-bold text-slate-800">{value.title}</h3>
@@ -140,7 +141,7 @@ export default function WhoWeAreSection() {
             >
               <Link
                 href="/aboutus"
-                className="px-7 py-3.5 bg-blue-600 text-white font-semibold rounded-xl hover:bg-blue-700 transition-colors duration-200 flex items-center justify-center gap-2 group"
+                className="px-7 py-3.5 bg-blue-600 text-white font-semibold rounded-xl shadow-lg shadow-blue-600/25 hover:bg-blue-700 hover:shadow-xl hover:shadow-blue-600/35 hover:-translate-y-0.5 transition-all duration-200 flex items-center justify-center gap-2 group"
               >
                 <span>Discover Our Story</span>
                 <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
@@ -148,7 +149,7 @@ export default function WhoWeAreSection() {
 
               <Link
                 href="/career"
-                className="px-7 py-3.5 bg-white text-slate-700 font-semibold rounded-xl border border-slate-200 hover:border-blue-300 transition-colors duration-200 flex items-center justify-center gap-2"
+                className="px-7 py-3.5 bg-white text-slate-700 font-semibold rounded-xl border border-slate-200 hover:border-blue-300 hover:shadow-md hover:-translate-y-0.5 transition-all duration-200 flex items-center justify-center gap-2"
               >
                 <Users className="w-5 h-5 text-blue-600" />
                 <span>Join Our Team</span>
@@ -165,7 +166,7 @@ export default function WhoWeAreSection() {
             className="relative pb-8 sm:pb-0"
           >
             {/* Main Image Container */}
-            <div className="relative w-full h-[380px] sm:h-[460px] rounded-2xl overflow-hidden shadow-xl">
+            <div className="relative w-full h-[380px] sm:h-[460px] rounded-2xl overflow-hidden shadow-2xl ring-1 ring-black/5">
               <Image
                 src="/whoweare.jpg"
                 alt="Ultracom Networks Team"
@@ -198,7 +199,7 @@ export default function WhoWeAreSection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.3 }}
-              className="mt-4 sm:mt-0 sm:absolute sm:-right-6 sm:-bottom-6 bg-white p-5 rounded-2xl shadow-lg border border-slate-100 w-full sm:w-56"
+              className="mt-4 sm:mt-0 sm:absolute sm:-right-6 sm:-bottom-6 bg-white p-5 rounded-2xl shadow-xl border border-slate-100 w-full sm:w-56 hover:-translate-y-1 transition-transform duration-300"
             >
               <div className="flex items-center gap-3 mb-2">
                 <div className="p-2 bg-blue-50 rounded-lg">
@@ -227,7 +228,7 @@ export default function WhoWeAreSection() {
           ].map((item, index) => (
             <div
               key={index}
-              className="text-center p-5 sm:p-6 rounded-2xl bg-white border border-slate-200 hover:border-blue-200 hover:shadow-md transition-all duration-300"
+              className="text-center p-5 sm:p-6 rounded-2xl bg-white border border-slate-200 hover:border-blue-200 hover:shadow-lg hover:-translate-y-1 transition-all duration-300"
             >
               <div className="text-sm text-slate-500 mb-2">{item.label}</div>
               <div className="text-lg sm:text-xl font-bold text-slate-900">

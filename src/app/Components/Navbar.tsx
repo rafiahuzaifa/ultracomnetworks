@@ -131,7 +131,7 @@ export default function Navbar() {
 
             <a
               href="tel:+923111000929"
-              className="flex items-center gap-2 text-xs font-semibold text-white"
+              className="flex items-center gap-2 text-xs font-semibold text-white bg-white/10 hover:bg-white/15 px-3.5 py-1.5 rounded-full transition-colors duration-200"
             >
               <Phone className="w-3.5 h-3.5 text-blue-400" />
               +92 311 1000929
@@ -141,16 +141,16 @@ export default function Navbar() {
       </div>
 
       {/* MAIN NAVBAR */}
-      <header className={`sticky top-0 z-50 bg-white transition-shadow duration-300 ${scrolled ? "shadow-md" : "shadow-sm"}`}>
+      <header className={`sticky top-0 z-50 transition-all duration-300 ${scrolled ? "bg-white/90 backdrop-blur-md shadow-md" : "bg-white shadow-sm"}`}>
         <nav className="max-w-7xl mx-auto px-6 flex items-center justify-between h-20">
           {/* Logo */}
-          <Link href="/" className="relative">
+          <Link href="/" className="relative group">
             <Image
               src="/logo.png"
               alt="Ultracom Networks"
               width={180}
               height={58}
-              className="object-contain"
+              className="object-contain transition-transform duration-300 group-hover:scale-105"
               priority
             />
           </Link>
@@ -198,7 +198,7 @@ export default function Navbar() {
                                 <li key={item.name}>
                                   <Link
                                     href={item.href}
-                                    className="group/item block py-2 px-2.5 -mx-2.5 rounded-lg hover:bg-slate-50 transition-colors duration-150"
+                                    className="group/item block py-2 px-2.5 -mx-2.5 rounded-lg border-l-2 border-transparent hover:border-blue-500 hover:bg-slate-50 transition-all duration-150"
                                   >
                                     <div className="font-medium text-slate-800 group-hover/item:text-blue-600 transition-colors text-sm">
                                       {item.name}
@@ -216,7 +216,7 @@ export default function Navbar() {
                         <p className="text-sm text-slate-500">Enterprise-grade IT, Digital & AI solutions under one roof.</p>
                         <Link
                           href="/services"
-                          className="inline-flex items-center gap-1.5 bg-blue-600 text-white font-semibold px-5 py-2.5 rounded-lg hover:bg-blue-700 transition-colors duration-200 text-sm"
+                          className="inline-flex items-center gap-1.5 bg-blue-600 text-white font-semibold px-5 py-2.5 rounded-lg shadow-md shadow-blue-600/20 hover:bg-blue-700 hover:shadow-lg hover:shadow-blue-600/30 hover:-translate-y-0.5 transition-all duration-200 text-sm"
                         >
                           All Services
                           <ChevronRight className="w-4 h-4" />
@@ -275,7 +275,7 @@ export default function Navbar() {
                         </p>
                         <Link
                           href="/aboutus"
-                          className="mt-5 inline-flex items-center gap-1.5 bg-blue-600 text-white font-semibold px-5 py-2.5 rounded-lg hover:bg-blue-700 transition-colors duration-200 text-sm"
+                          className="mt-5 inline-flex items-center gap-1.5 bg-blue-600 text-white font-semibold px-5 py-2.5 rounded-lg shadow-md shadow-blue-600/20 hover:bg-blue-700 hover:shadow-lg hover:shadow-blue-600/30 hover:-translate-y-0.5 transition-all duration-200 text-sm"
                         >
                           Company Overview
                           <ChevronRight className="w-4 h-4" />
@@ -294,7 +294,7 @@ export default function Navbar() {
                                 <li key={item.name}>
                                   <Link
                                     href={item.href}
-                                    className="group/item block py-2 px-2.5 -mx-2.5 rounded-lg hover:bg-slate-50 transition-colors duration-150"
+                                    className="group/item block py-2 px-2.5 -mx-2.5 rounded-lg border-l-2 border-transparent hover:border-blue-500 hover:bg-slate-50 transition-all duration-150"
                                   >
                                     <div className="font-medium text-slate-800 group-hover/item:text-blue-600 transition-colors text-sm">
                                       {item.name}
@@ -449,7 +449,7 @@ export default function Navbar() {
                               <Link
                                 href="/services"
                                 onClick={() => setMobileOpen(false)}
-                                className="block mt-2 py-3 bg-blue-600 text-white font-semibold text-center rounded-xl hover:bg-blue-700 transition-colors duration-200"
+                                className="block mt-2 py-3 bg-blue-600 text-white font-semibold text-center rounded-xl shadow-md shadow-blue-600/25 hover:bg-blue-700 hover:shadow-lg transition-all duration-200"
                               >
                                 View All Services
                               </Link>
@@ -532,7 +532,7 @@ export default function Navbar() {
                     <h3 className="font-semibold text-slate-800 mb-4">Need Immediate Support?</h3>
                     <a
                       href="tel:+923111000929"
-                      className="flex items-center justify-center gap-2 bg-blue-600 text-white font-semibold py-3.5 rounded-xl hover:bg-blue-700 transition-colors duration-200 mb-3"
+                      className="flex items-center justify-center gap-2 bg-blue-600 text-white font-semibold py-3.5 rounded-xl shadow-md shadow-blue-600/25 hover:bg-blue-700 hover:shadow-lg transition-all duration-200 mb-3"
                       onClick={() => setMobileOpen(false)}
                     >
                       <Phone className="w-4.5 h-4.5" />
@@ -681,7 +681,7 @@ export default function Navbar() {
                 <button
                   type="submit"
                   disabled={formStatus === "loading"}
-                  className="w-full bg-blue-600 text-white font-semibold py-3.5 rounded-xl hover:bg-blue-700 transition-colors duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
+                  className="w-full bg-blue-600 text-white font-semibold py-3.5 rounded-xl shadow-md shadow-blue-600/25 hover:bg-blue-700 hover:shadow-lg transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
                 >
                   {formStatus === "loading" ? (
                     <div className="flex items-center justify-center gap-2">

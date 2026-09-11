@@ -2,11 +2,11 @@
 
 /* Professional Typography System */
 :root {
-  --primary: #0072CE;
+  --primary: #1d4ed8;
   --navy: #0A1F33;
   --surface: #F4F7FA;
   --textgray: #4B5563;
-  
+
   /* Typography Scales */
   --font-size-xs: 0.75rem;
   --font-size-sm: 0.875rem;
@@ -44,8 +44,9 @@ a {
 
 /* Headings - Professional Hierarchy */
 h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading), var(--font-inter), sans-serif;
   font-weight: 700;
-  letter-spacing: -0.02em;
+  letter-spacing: -0.03em;
   line-height: var(--line-height-snug);
 }
 

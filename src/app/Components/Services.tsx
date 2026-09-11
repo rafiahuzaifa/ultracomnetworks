@@ -10,7 +10,7 @@ import { useState, useEffect, useRef } from "react";
 const allServices = [
   { title: "Dedicated Internet", subtitle: "High-speed fiber internet", href: "/services/internet", category: "connectivity", image: "/internet.jpeg" },
   { title: "LAN & WAN Networking", subtitle: "Enterprise network deployment", href: "/services/lan-wan", category: "infrastructure", image: "/lanwan.jpeg" },
-  { title: "Cloud WiFi Solution", subtitle: "Smart managed WiFi systems", href: "/services/cloud-wifi", category: "connectivity", image: "/webdevlopment2.jpg" },
+  { title: "Cloud WiFi Solution", subtitle: "Smart managed WiFi systems", href: "/services/cloud-wifi", category: "connectivity", image: "/cloudwifi.jpeg" },
   { title: "Network Support", subtitle: "24/7 monitoring & engineers", href: "/services/network-support", category: "infrastructure", image: "/internet.jpeg" },
   { title: "Data Center Services", subtitle: "Secure colocation & hosting", href: "/services/data-center", category: "infrastructure", image: "/datacenter.jpeg" },
   { title: "Call Center Solutions", subtitle: "PBX, IVR, omnichannel", href: "/services/call-center", category: "voice", image: "/callcenter.jpeg" },
@@ -48,9 +48,15 @@ export default function ServicesCarousel() {
 
   return (
     <section className="relative py-20 sm:py-28 bg-slate-900 text-white overflow-hidden">
+      <div className="absolute top-10 left-1/4 w-[400px] h-[400px] bg-blue-500/10 rounded-full blur-[100px] pointer-events-none"></div>
+      <div className="absolute bottom-0 right-1/4 w-[400px] h-[400px] bg-blue-500/5 rounded-full blur-[100px] pointer-events-none"></div>
+
       <div className="relative z-10 max-w-7xl mx-auto px-6">
         {/* Heading */}
         <div className="text-center mb-14 sm:mb-16">
+          <div className="inline-flex items-center gap-2 bg-blue-500/10 text-blue-300 px-4 py-1.5 rounded-full text-xs font-semibold tracking-wide mb-4">
+            WHAT WE OFFER
+          </div>
           <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight">
             Our <span className="text-blue-400">Premium Services</span>
           </h1>
@@ -81,8 +87,8 @@ export default function ServicesCarousel() {
                   `}
                 >
                   <motion.div
-                    whileHover={{ y: -6 }}
-                    className="group relative bg-slate-800 border border-slate-700 rounded-2xl overflow-hidden h-[460px] transition-all duration-300 hover:border-slate-600"
+                    whileHover={{ y: -8 }}
+                    className="group relative bg-slate-800 border border-slate-700 rounded-2xl overflow-hidden h-[460px] transition-all duration-300 hover:border-blue-500/40 hover:shadow-2xl hover:shadow-blue-500/10"
                   >
                     <div className="relative h-52 overflow-hidden">
                       <Image
@@ -103,7 +109,7 @@ export default function ServicesCarousel() {
 
                       <Link
                         href={service.href}
-                        className="mt-auto inline-flex items-center gap-2 px-5 py-2.5 bg-blue-600 rounded-lg font-semibold text-sm hover:bg-blue-500 transition-colors duration-200 w-fit"
+                        className="mt-auto inline-flex items-center gap-2 px-5 py-2.5 bg-blue-600 rounded-lg font-semibold text-sm shadow-lg shadow-blue-600/20 hover:bg-blue-500 hover:shadow-blue-500/30 transition-all duration-200 w-fit"
                       >
                         Explore
                         <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
