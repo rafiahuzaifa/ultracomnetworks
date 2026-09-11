@@ -59,7 +59,7 @@ export default function OurNetwork() {
             />
           </div>
           <p className="text-center text-lg text-gray-600 mt-6 font-medium">
-            Fiber routes in Lahore, Karachi, Islamabad, Faisalabad, Multan, Sialkot, and 16+ cities
+            Fiber routes in Karachi, Faisalabad, Multan, Sialkot, and 16+ cities
           </p>
         </div>
       </section>
@@ -81,7 +81,7 @@ export default function OurNetwork() {
               {
                 icon: Server,
                 title: "Tier-3 Data Centers",
-                desc: "Dual facilities in Karachi & Lahore with 99.99% uptime SLA",
+                desc: "State-of-the-art facility in Karachi with 99.99% uptime SLA",
                 stats: "N+1 Power & Cooling",
               },
               {

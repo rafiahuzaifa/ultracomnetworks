@@ -47,23 +47,14 @@ export default function ServicesCarousel() {
   const goPrev = () => setCurrentIndex((prev) => (prev - 1 + totalSlides) % totalSlides);
 
   return (
-    <section className="relative py-24 bg-[#021130] text-white overflow-hidden">
-      {/* Background Glows */}
-      <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-10 left-10 w-96 h-96 bg-cyan-500/20 rounded-full blur-3xl animate-pulse" />
-        <div className="absolute bottom-10 right-10 w-96 h-96 bg-blue-600/20 rounded-full blur-3xl animate-pulse delay-1000" />
-      </div>
-
+    <section className="relative py-20 sm:py-28 bg-slate-900 text-white overflow-hidden">
       <div className="relative z-10 max-w-7xl mx-auto px-6">
         {/* Heading */}
-        <div className="text-center mb-20">
-          <h1 className="text-6xl md:text-7xl font-extrabold tracking-tight">
-            Our
-            <span className="block mt-3 text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500">
-              Premium Services
-            </span>
+        <div className="text-center mb-14 sm:mb-16">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight">
+            Our <span className="text-blue-400">Premium Services</span>
           </h1>
-          <p className="mt-6 text-lg md:text-xl text-cyan-100/80 tracking-wide max-w-3xl mx-auto">Explore all solutions with smooth sliding</p>
+          <p className="mt-4 text-base sm:text-lg text-slate-400 max-w-2xl mx-auto">Enterprise-grade IT, connectivity & digital solutions, all in one place</p>
         </div>
 
         {/* Carousel */}
@@ -90,32 +81,32 @@ export default function ServicesCarousel() {
                   `}
                 >
                   <motion.div
-                    whileHover={{ y: -16, scale: 1.04 }}
-                    className="group relative bg-white/5 border border-white/15 rounded-2xl overflow-hidden backdrop-blur-xl h-[520px] shadow-2xl hover:shadow-2xl hover:shadow-cyan-500/40 transition-all duration-500"
+                    whileHover={{ y: -6 }}
+                    className="group relative bg-slate-800 border border-slate-700 rounded-2xl overflow-hidden h-[460px] transition-all duration-300 hover:border-slate-600"
                   >
-                    <div className="relative h-64 overflow-hidden">
+                    <div className="relative h-52 overflow-hidden">
                       <Image
                         src={service.image}
                         alt={service.title}
                         fill
-                        className="object-cover transition-transform duration-700 group-hover:scale-110"
+                        className="object-cover transition-transform duration-500 group-hover:scale-105"
                       />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent" />
-                      <span className="absolute top-4 left-4 px-4 py-1.5 text-xs font-bold uppercase tracking-wider text-cyan-300 bg-cyan-500/20 rounded-md backdrop-blur border border-cyan-400/40">
-                        {service.category.toUpperCase()}
+                      <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/20 to-transparent" />
+                      <span className="absolute top-4 left-4 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-blue-300 bg-slate-900/70 rounded-md">
+                        {service.category}
                       </span>
                     </div>
 
-                    <div className="p-8 flex flex-col h-full">
-                      <h3 className="text-2xl font-bold mb-2 tracking-tight">{service.title}</h3>
-                      <p className="text-gray-300 mb-8 text-sm md:text-base leading-relaxed">{service.subtitle}</p>
+                    <div className="p-6 flex flex-col h-[calc(460px-208px)]">
+                      <h3 className="text-lg font-bold mb-2">{service.title}</h3>
+                      <p className="text-slate-400 mb-6 text-sm leading-relaxed">{service.subtitle}</p>
 
                       <Link
                         href={service.href}
-                        className="mt-auto inline-flex items-center gap-3 px-6 py-3 bg-gradient-to-r from-cyan-500 to-blue-600 rounded-lg font-bold text-base hover:from-cyan-400 hover:to-blue-500 hover:shadow-lg hover:shadow-cyan-500/50 transition-all duration-300 border border-cyan-400/30 hover:border-cyan-300/50"
+                        className="mt-auto inline-flex items-center gap-2 px-5 py-2.5 bg-blue-600 rounded-lg font-semibold text-sm hover:bg-blue-500 transition-colors duration-200 w-fit"
                       >
                         Explore
-                        <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1" />
+                        <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
                       </Link>
                     </div>
                   </motion.div>
@@ -127,27 +118,30 @@ export default function ServicesCarousel() {
           {/* Arrows */}
           <button
             onClick={goPrev}
-            className="absolute left-4 top-1/2 -translate-y-1/2 bg-white/10 backdrop-blur p-4 rounded-full hover:bg-white/20 transition z-10"
+            aria-label="Previous"
+            className="hidden sm:flex absolute -left-4 top-1/2 -translate-y-1/2 bg-slate-800 border border-slate-700 p-3 rounded-full hover:bg-slate-700 transition z-10"
           >
-            <ChevronLeft className="w-8 h-8" />
+            <ChevronLeft className="w-6 h-6" />
           </button>
           <button
             onClick={goNext}
-            className="absolute right-4 top-1/2 -translate-y-1/2 bg-white/10 backdrop-blur p-4 rounded-full hover:bg-white/20 transition z-10"
+            aria-label="Next"
+            className="hidden sm:flex absolute -right-4 top-1/2 -translate-y-1/2 bg-slate-800 border border-slate-700 p-3 rounded-full hover:bg-slate-700 transition z-10"
           >
-            <ChevronRight className="w-8 h-8" />
+            <ChevronRight className="w-6 h-6" />
           </button>
 
           {/* Dots */}
-          <div className="flex justify-center gap-3 mt-12 flex-wrap">
+          <div className="flex justify-center gap-2 mt-10 flex-wrap">
             {Array.from({ length: totalSlides }).map((_, i) => (
               <button
                 key={i}
                 onClick={() => setCurrentIndex(i)}
-                className={`transition-all duration-300 rounded-full ${
+                aria-label={`Go to slide ${i + 1}`}
+                className={`h-2 rounded-full transition-all duration-300 ${
                   i === currentIndex
-                    ? "w-12 h-3 bg-cyan-400"
-                    : "w-3 h-3 bg-white/30 hover:bg-white/60"
+                    ? "w-8 bg-blue-500"
+                    : "w-2 bg-slate-600 hover:bg-slate-500"
                 }`}
               />
             ))}

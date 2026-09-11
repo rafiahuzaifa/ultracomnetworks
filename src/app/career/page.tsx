@@ -8,8 +8,8 @@ import Link from "next/link";
 
 const jobOpenings = [
   { title: "Senior Network Engineer", location: "Karachi", type: "Full-Time" },
-  { title: "Enterprise Sales Manager", location: "Lahore", type: "Full-Time" },
-  { title: "Customer Success Executive", location: "Islamabad", type: "Full-Time" },
+  { title: "Enterprise Sales Manager", location: "Karachi", type: "Full-Time" },
+  { title: "Customer Success Executive", location: "Karachi", type: "Full-Time" },
   { title: "Technical Support Specialist", location: "Karachi", type: "Full-Time" },
 ];
 

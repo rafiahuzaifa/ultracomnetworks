@@ -19,7 +19,7 @@ export default function WhatsAppButton() {
         href={whatsappUrl}
         target="_blank"
         rel="noopener noreferrer"
-        className="fixed bottom-6 right-6 z-50 group"
+        className="fixed bottom-5 sm:bottom-6 right-5 sm:right-6 z-50 group"
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
       >
@@ -29,7 +29,7 @@ export default function WhatsAppButton() {
         {/* Main Button */}
         <div
           className={`
-            relative w-16 h-16 bg-green-600 rounded-full shadow-2xl flex items-center justify-center
+            relative w-14 h-14 sm:w-16 sm:h-16 bg-green-600 rounded-full shadow-xl flex items-center justify-center
             transition-all duration-300 transform
             ${isHovered ? 'scale-110 shadow-green-500/50' : 'scale-100'}
             group-hover:shadow-xl

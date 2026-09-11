@@ -7,7 +7,6 @@ import {
   Shield,
   Award,
   Zap,
-  ChevronRight,
   Send,
   ArrowRight,
   Linkedin,
@@ -22,92 +21,70 @@ export default function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="relative overflow-hidden bg-gradient-to-b from-slate-900 via-slate-800 to-slate-900 text-white pt-20 pb-12 font-geist-sans">
-      {/* Background Pattern */}
-      <div className="absolute inset-0 opacity-5">
-        <div className="absolute inset-0" style={{
-          backgroundImage: `radial-gradient(circle at 2px 2px, rgba(255,255,255,0.1) 1px, transparent 1px)`,
-          backgroundSize: '40px 40px'
-        }}></div>
-      </div>
-
-      {/* Decorative Elements */}
-      <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-cyan-500 via-blue-500 to-cyan-500"></div>
-      <div className="absolute top-20 left-1/4 w-64 h-64 bg-cyan-500/5 rounded-full blur-3xl"></div>
-      <div className="absolute bottom-20 right-1/4 w-80 h-80 bg-blue-500/5 rounded-full blur-3xl"></div>
-
+    <footer className="relative bg-slate-900 text-white pt-16 sm:pt-20 pb-10 font-geist-sans">
       <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 relative z-10">
-        
+
         {/* Main Footer Content */}
-        <div className="grid grid-cols-1 lg:grid-cols-4 gap-12 mb-16">
-          
+        <div className="grid grid-cols-1 lg:grid-cols-4 gap-10 sm:gap-12 mb-14 sm:mb-16">
+
           {/* Company Info Column */}
           <div className="lg:col-span-2">
             <div className="mb-8">
               <Link href="/" className="inline-block">
                 <div className="flex items-center gap-4 mb-6">
-                  <div className="relative">
-                    <div className="absolute -inset-4 bg-gradient-to-r from-cyan-500/20 to-blue-500/20 rounded-2xl blur-xl"></div>
-                    <Image
-                      src="/logo.png"
-                      alt="Ultracom Networks"
-                      width={180}
-                      height={60}
-                      className="relative object-contain filter brightness-0 invert"
-                    />
-                  </div>
-                  <div className="bg-gradient-to-r from-cyan-400 to-blue-400 bg-clip-text">
-                    <h2 className="text-2xl font-bold tracking-tight">Ultracom Networks</h2>
-                    <p className="text-sm text-slate-300">Enterprise IT Solutions</p>
+                  <Image
+                    src="/logo.png"
+                    alt="Ultracom Networks"
+                    width={180}
+                    height={60}
+                    className="object-contain filter brightness-0 invert"
+                  />
+                  <div>
+                    <h2 className="text-xl font-bold tracking-tight">Ultracom Networks</h2>
+                    <p className="text-sm text-slate-400">Enterprise IT Solutions</p>
                   </div>
                 </div>
               </Link>
-              
-              <p className="text-slate-300 leading-relaxed mb-8 max-w-xl">
-                Leading provider of enterprise-grade connectivity, network infrastructure, 
-                and digital transformation solutions. Empowering businesses across Pakistan 
+
+              <p className="text-slate-400 leading-relaxed mb-7 max-w-xl">
+                Leading provider of enterprise-grade connectivity, network infrastructure,
+                and digital transformation solutions. Empowering businesses across Pakistan
                 with reliable, scalable, and secure IT services.
               </p>
 
               {/* Contact Info */}
-              <div className="space-y-4 mb-8">
-                <a 
-                  href="tel:+923111000929" 
-                  className="flex items-center gap-3 text-slate-300 hover:text-white transition-colors group"
+              <div className="space-y-3.5 mb-8">
+                <a
+                  href="tel:+923111000929"
+                  className="flex items-center gap-3 text-slate-300 hover:text-white transition-colors"
                 >
-                  <div className="p-2 bg-gradient-to-br from-cyan-500/10 to-blue-500/10 rounded-lg group-hover:from-cyan-500/20 group-hover:to-blue-500/20 transition-all">
-                    <Phone className="w-4 h-4 text-cyan-400" />
-                  </div>
+                  <Phone className="w-4 h-4 text-blue-400" />
                   <span className="font-medium">+92 311 1000929</span>
                 </a>
-                <a 
-                  href="mailto:info@ultracomnetworks.com" 
-                  className="flex items-center gap-3 text-slate-300 hover:text-white transition-colors group"
+                <a
+                  href="mailto:info@ultracomnetworks.com"
+                  className="flex items-center gap-3 text-slate-300 hover:text-white transition-colors"
                 >
-                  <div className="p-2 bg-gradient-to-br from-cyan-500/10 to-blue-500/10 rounded-lg group-hover:from-cyan-500/20 group-hover:to-blue-500/20 transition-all">
-                    <Mail className="w-4 h-4 text-cyan-400" />
-                  </div>
+                  <Mail className="w-4 h-4 text-blue-400" />
                   <span className="font-medium">info@ultracomnetworks.com</span>
                 </a>
-                <div className="flex items-center gap-3 text-slate-300 group">
-                  <div className="p-2 bg-gradient-to-br from-cyan-500/10 to-blue-500/10 rounded-lg">
-                    <MapPin className="w-4 h-4 text-cyan-400" />
-                  </div>
-                  <span className="font-medium">Lahore, Pakistan HQ</span>
+                <div className="flex items-center gap-3 text-slate-300">
+                  <MapPin className="w-4 h-4 text-blue-400" />
+                  <span className="font-medium">Karachi, Pakistan HQ</span>
                 </div>
               </div>
             </div>
 
             {/* Newsletter Subscription */}
-            <div className="bg-gradient-to-br from-slate-800/50 to-slate-900/50 backdrop-blur-sm rounded-2xl p-6 border border-slate-700/50">
-              <h3 className="text-lg font-bold mb-3 flex items-center gap-2">
-                <Send className="w-5 h-5 text-cyan-400" />
+            <div className="bg-white/5 rounded-2xl p-6 border border-white/10">
+              <h3 className="text-base font-bold mb-2 flex items-center gap-2">
+                <Send className="w-4 h-4 text-blue-400" />
                 Stay Updated
               </h3>
-              <p className="text-sm text-slate-300 mb-4">
+              <p className="text-sm text-slate-400 mb-4">
                 Subscribe to our newsletter for the latest in IT solutions and industry insights.
               </p>
-              
+
               {/* Use Client Component for form */}
               <ClientFooter />
             </div>
@@ -117,11 +94,11 @@ export default function Footer() {
           <div className="grid grid-cols-2 gap-8">
             {/* Services Column */}
             <div>
-              <h3 className="text-sm font-bold text-white uppercase tracking-widest mb-6 flex items-center gap-2">
-                <Zap className="w-4 h-4 text-cyan-400" />
-                SERVICES
+              <h3 className="text-sm font-semibold text-white uppercase tracking-wide mb-5 flex items-center gap-2">
+                <Zap className="w-4 h-4 text-blue-400" />
+                Services
               </h3>
-              <nav className="space-y-4">
+              <nav className="space-y-3">
                 {[
                   { name: "Internet Solutions", href: "/services/internet" },
                   { name: "Network Infrastructure", href: "/services/lan-wan" },
@@ -132,12 +109,9 @@ export default function Footer() {
                   <Link
                     key={link.name}
                     href={link.href}
-                    className="group flex items-center text-slate-300 hover:text-white transition-all duration-300"
+                    className="block text-slate-400 hover:text-white transition-colors duration-200 text-sm"
                   >
-                    <ChevronRight className="w-3 h-3 mr-2 text-cyan-500 opacity-0 group-hover:opacity-100 transition-opacity" />
-                    <span className="font-medium hover:translate-x-1 transition-transform">
-                      {link.name}
-                    </span>
+                    {link.name}
                   </Link>
                 ))}
               </nav>
@@ -145,11 +119,11 @@ export default function Footer() {
 
             {/* Company Column */}
             <div>
-              <h3 className="text-sm font-bold text-white uppercase tracking-widest mb-6 flex items-center gap-2">
-                <Globe className="w-4 h-4 text-cyan-400" />
-                COMPANY
+              <h3 className="text-sm font-semibold text-white uppercase tracking-wide mb-5 flex items-center gap-2">
+                <Globe className="w-4 h-4 text-blue-400" />
+                Company
               </h3>
-              <nav className="space-y-4">
+              <nav className="space-y-3">
                 {[
                   { name: "About Us", href: "/aboutus" },
                   { name: "Our Network", href: "/our-networks" },
@@ -160,12 +134,9 @@ export default function Footer() {
                   <Link
                     key={link.name}
                     href={link.href}
-                    className="group flex items-center text-slate-300 hover:text-white transition-all duration-300"
+                    className="block text-slate-400 hover:text-white transition-colors duration-200 text-sm"
                   >
-                    <ChevronRight className="w-3 h-3 mr-2 text-cyan-500 opacity-0 group-hover:opacity-100 transition-opacity" />
-                    <span className="font-medium hover:translate-x-1 transition-transform">
-                      {link.name}
-                    </span>
+                    {link.name}
                   </Link>
                 ))}
               </nav>
@@ -175,12 +146,12 @@ export default function Footer() {
           {/* Legal & Social Column */}
           <div>
             {/* Legal Section */}
-            <div className="mb-10">
-              <h3 className="text-sm font-bold text-white uppercase tracking-widest mb-6 flex items-center gap-2">
-                <Shield className="w-4 h-4 text-cyan-400" />
-                LEGAL
+            <div className="mb-9">
+              <h3 className="text-sm font-semibold text-white uppercase tracking-wide mb-5 flex items-center gap-2">
+                <Shield className="w-4 h-4 text-blue-400" />
+                Legal
               </h3>
-              <nav className="space-y-4">
+              <nav className="space-y-3">
                 {[
                   { name: "Privacy Policy", href: "/privicy-policy" },
                   { name: "Acceptable Use Policy", href: "/accectable-policy" },
@@ -189,12 +160,9 @@ export default function Footer() {
                   <Link
                     key={link.name}
                     href={link.href}
-                    className="group flex items-center text-slate-300 hover:text-white transition-all duration-300"
+                    className="block text-slate-400 hover:text-white transition-colors duration-200 text-sm"
                   >
-                    <ChevronRight className="w-3 h-3 mr-2 text-cyan-500 opacity-0 group-hover:opacity-100 transition-opacity" />
-                    <span className="font-medium hover:translate-x-1 transition-transform">
-                      {link.name}
-                    </span>
+                    {link.name}
                   </Link>
                 ))}
               </nav>
@@ -202,25 +170,24 @@ export default function Footer() {
 
             {/* Social Media */}
             <div>
-              <h3 className="text-sm font-bold text-white uppercase tracking-widest mb-6 flex items-center gap-2">
-                <div className="w-4 h-4 bg-gradient-to-r from-cyan-400 to-blue-400 rounded-full"></div>
-                CONNECT WITH US
+              <h3 className="text-sm font-semibold text-white uppercase tracking-wide mb-5">
+                Connect With Us
               </h3>
-              <div className="flex items-center gap-4">
+              <div className="flex items-center gap-3">
                 {[
-                  { icon: Linkedin, href: "https://linkedin.com/company/ultracomnetworks", color: "hover:bg-blue-600" },
-                  { icon: Twitter, href: "https://twitter.com/ultracomnetworks", color: "hover:bg-sky-500" },
-                  { icon: Facebook, href: "https://facebook.com/ultracomnetworks", color: "hover:bg-blue-700" },
-                  { icon: Instagram, href: "https://instagram.com/ultracomnetworks", color: "hover:bg-pink-600" },
+                  { icon: Linkedin, href: "https://linkedin.com/company/ultracomnetworks" },
+                  { icon: Twitter, href: "https://twitter.com/ultracomnetworks" },
+                  { icon: Facebook, href: "https://facebook.com/ultracomnetworks" },
+                  { icon: Instagram, href: "https://instagram.com/ultracomnetworks" },
                 ].map((social) => (
                   <a
                     key={social.href}
                     href={social.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className={`group p-3 bg-slate-800/50 backdrop-blur-sm rounded-xl border border-slate-700/50 ${social.color} hover:scale-110 hover:shadow-lg transition-all duration-300`}
+                    className="p-2.5 bg-white/5 rounded-lg border border-white/10 hover:bg-white/10 hover:border-white/20 transition-colors duration-200"
                   >
-                    <social.icon className="w-5 h-5 text-slate-300 group-hover:text-white transition-colors" />
+                    <social.icon className="w-4.5 h-4.5 text-slate-300" />
                   </a>
                 ))}
               </div>
@@ -229,36 +196,36 @@ export default function Footer() {
         </div>
 
         {/* Trust Badges */}
-        <div className="mb-12">
-          <div className="flex flex-wrap items-center justify-center gap-8 p-6 bg-gradient-to-r from-slate-800/30 to-slate-900/30 backdrop-blur-sm rounded-2xl border border-slate-700/30">
+        <div className="mb-10 sm:mb-12">
+          <div className="flex flex-wrap items-center justify-center gap-6 sm:gap-8 p-5 sm:p-6 bg-white/5 rounded-2xl border border-white/10">
             <div className="flex items-center gap-3">
-              <Award className="w-6 h-6 text-cyan-400" />
+              <Award className="w-5 h-5 text-blue-400" />
               <div>
-                <div className="font-bold">ISO 27001 Certified</div>
-                <div className="text-sm text-slate-400">Information Security</div>
+                <div className="font-semibold text-sm">ISO 27001 Certified</div>
+                <div className="text-xs text-slate-400">Information Security</div>
               </div>
             </div>
-            <div className="h-8 w-px bg-slate-700"></div>
+            <div className="hidden sm:block h-8 w-px bg-slate-700"></div>
             <div className="flex items-center gap-3">
-              <Shield className="w-6 h-6 text-cyan-400" />
+              <Shield className="w-5 h-5 text-blue-400" />
               <div>
-                <div className="font-bold">24/7 Support</div>
-                <div className="text-sm text-slate-400">Enterprise SLA</div>
+                <div className="font-semibold text-sm">24/7 Support</div>
+                <div className="text-xs text-slate-400">Enterprise SLA</div>
               </div>
             </div>
-            <div className="h-8 w-px bg-slate-700"></div>
+            <div className="hidden sm:block h-8 w-px bg-slate-700"></div>
             <div className="flex items-center gap-3">
-              <Zap className="w-6 h-6 text-cyan-400" />
+              <Zap className="w-5 h-5 text-blue-400" />
               <div>
-                <div className="font-bold">10+ Years</div>
-                <div className="text-sm text-slate-400">Industry Experience</div>
+                <div className="font-semibold text-sm">10+ Years</div>
+                <div className="text-xs text-slate-400">Industry Experience</div>
               </div>
             </div>
           </div>
         </div>
 
         {/* Divider */}
-        <div className="h-px w-full bg-gradient-to-r from-transparent via-slate-700 to-transparent mb-8"></div>
+        <div className="h-px w-full bg-slate-800 mb-8"></div>
 
         {/* Bottom Bar */}
         <div className="flex flex-col md:flex-row justify-between items-center gap-6">
@@ -271,19 +238,19 @@ export default function Footer() {
             </p>
           </div>
 
-          <div className="flex flex-col sm:flex-row items-center gap-4">
-            <div className="px-6 py-3 bg-gradient-to-r from-cyan-500/10 via-blue-500/10 to-cyan-500/10 backdrop-blur-sm rounded-xl border border-cyan-500/20">
+          <div className="flex flex-col sm:flex-row items-center gap-3">
+            <div className="px-5 py-2.5 bg-white/5 rounded-xl border border-white/10">
               <div className="flex items-center gap-2">
-                <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
-                <span className="font-bold bg-gradient-to-r from-cyan-400 to-blue-400 bg-clip-text text-transparent">
+                <div className="w-2 h-2 bg-green-500 rounded-full"></div>
+                <span className="font-semibold text-slate-200 text-sm">
                   Pakistan&apos;s #1 Enterprise Network
                 </span>
               </div>
             </div>
-            
-            <Link 
-              href="/contactus" 
-              className="px-6 py-3 bg-gradient-to-r from-cyan-600 to-blue-600 rounded-xl font-semibold hover:from-cyan-500 hover:to-blue-500 hover:shadow-lg hover:shadow-cyan-500/20 transition-all duration-300 flex items-center gap-2 group"
+
+            <Link
+              href="/contactus"
+              className="px-6 py-2.5 bg-blue-600 rounded-xl font-semibold hover:bg-blue-700 transition-colors duration-200 flex items-center gap-2 group text-sm"
             >
               Get In Touch
               <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />

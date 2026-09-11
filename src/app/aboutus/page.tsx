@@ -126,7 +126,7 @@ const partners = [
 ];
 
 const careerOpportunities = [
-  { title: "Network Engineer", department: "Engineering", location: "Karachi, Lahore", type: "Full-time" },
+  { title: "Network Engineer", department: "Engineering", location: "Karachi", type: "Full-time" },
   { title: "Sales Executive", department: "Sales", location: "Multiple Cities", type: "Full-time" },
   { title: "Customer Support", department: "Support", location: "Karachi", type: "Full-time" },
   { title: "Cloud Architect", department: "Technology", location: "Remote", type: "Contract" },

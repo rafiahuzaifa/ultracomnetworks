@@ -1,10 +1,17 @@
 "use client";
 
-import { ArrowRight } from "lucide-react";
-import { useState } from "react";
+import { ArrowRight, ArrowUp } from "lucide-react";
+import { useEffect, useState } from "react";
 
 export default function ClientFooter() {
   const [email, setEmail] = useState("");
+  const [showTop, setShowTop] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => setShowTop(window.scrollY > 400);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   const handleNewsletterSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -14,22 +21,21 @@ export default function ClientFooter() {
   };
 
   const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
   return (
     <>
-      {/* Back to Top Button */}
-      <button
-        onClick={scrollToTop}
-        className="fixed bottom-8 right-8 p-3 bg-gradient-to-br from-cyan-600 to-blue-600 rounded-xl shadow-xl hover:shadow-2xl hover:shadow-cyan-500/30 hover:scale-110 transition-all duration-300 z-40 group"
-        aria-label="Back to top"
-      >
-        <div className="relative">
-          <div className="absolute -inset-2 bg-cyan-500/20 rounded-xl blur-md group-hover:blur-xl transition-all"></div>
-          <ArrowRight className="w-6 h-6 rotate-270 text-white relative" />
-        </div>
-      </button>
+      {/* Back to Top Button — stacked above the WhatsApp button, bottom-left to avoid overlap */}
+      {showTop && (
+        <button
+          onClick={scrollToTop}
+          className="fixed bottom-6 left-6 p-3 bg-slate-800 border border-slate-700 rounded-full shadow-lg hover:bg-slate-700 transition-colors duration-200 z-40"
+          aria-label="Back to top"
+        >
+          <ArrowUp className="w-5 h-5 text-white" />
+        </button>
+      )}
 
       {/* Interactive Newsletter Form */}
       <form onSubmit={handleNewsletterSubmit} className="flex gap-2">
@@ -38,11 +44,12 @@ export default function ClientFooter() {
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           placeholder="Enter your email"
-          className="flex-1 px-4 py-3 bg-slate-800/50 border border-slate-700 rounded-xl focus:outline-none focus:border-cyan-500 focus:ring-2 focus:ring-cyan-500/20 transition-all placeholder:text-slate-500"
+          required
+          className="flex-1 px-4 py-2.5 bg-white/5 border border-white/10 rounded-xl focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 transition-all placeholder:text-slate-500 text-sm"
         />
         <button
           type="submit"
-          className="px-6 py-3 bg-gradient-to-r from-cyan-600 to-blue-600 rounded-xl font-semibold hover:from-cyan-500 hover:to-blue-500 hover:shadow-lg hover:shadow-cyan-500/20 transition-all duration-300 flex items-center gap-2 group"
+          className="px-5 py-2.5 bg-blue-600 rounded-xl font-semibold hover:bg-blue-700 transition-colors duration-200 flex items-center gap-2 group text-sm"
         >
           Subscribe
           <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />

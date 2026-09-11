@@ -75,45 +75,43 @@ export default function Hero() {
                 className="object-cover"
                 priority
               />
-              <div className="absolute inset-0 bg-black/50" />
+              <div className="absolute inset-0 bg-gradient-to-r from-slate-900/70 via-slate-900/40 to-slate-900/20" />
             </motion.div>
           ) : null
         )}
       </AnimatePresence>
 
       {/* Content */}
-      <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 h-screen flex items-center">
+      <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 min-h-[85vh] sm:min-h-screen flex items-center py-20 sm:py-28">
         <AnimatePresence mode="wait">
           <motion.div
             key={current}
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: 30 }}
-            transition={{ duration: 0.8 }}
+            exit={{ opacity: 0, y: 20 }}
+            transition={{ duration: 0.6 }}
             className="space-y-6 text-white max-w-xl"
           >
-            <h1 className="text-5xl sm:text-6xl md:text-7xl font-bold leading-tight tracking-tight">
+            <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold leading-tight tracking-tight">
               {slides[current].title}
             </h1>
-            <p className="text-base sm:text-lg md:text-xl text-blue-100 leading-relaxed tracking-wide max-w-2xl">
+            <p className="text-base sm:text-lg text-slate-200 leading-relaxed max-w-lg">
               {slides[current].subtitle}
             </p>
 
-            <div className="flex flex-col sm:flex-row gap-4 pt-4">
+            <div className="flex flex-col sm:flex-row gap-3 pt-4">
               <motion.a
                 href="/services"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="inline-flex items-center justify-center px-8 py-4 bg-cyan-600 text-white font-bold text-base rounded-lg shadow-lg hover:shadow-2xl hover:shadow-cyan-500/50 transition-all duration-300 group border border-cyan-500/50 hover:border-cyan-400"
+                whileTap={{ scale: 0.98 }}
+                className="inline-flex items-center justify-center px-7 py-3.5 bg-blue-600 text-white font-semibold text-base rounded-lg hover:bg-blue-700 transition-colors duration-200 group"
               >
                 {slides[current].cta1}
-                <ChevronRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                <ChevronRight className="ml-1.5 w-5 h-5 group-hover:translate-x-1 transition-transform" />
               </motion.a>
               <motion.a
                 href="/contactus"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="inline-flex items-center justify-center px-8 py-4 border-2 border-white text-white font-bold text-base rounded-lg backdrop-blur-sm hover:bg-white/10 transition-all duration-300"
+                whileTap={{ scale: 0.98 }}
+                className="inline-flex items-center justify-center px-7 py-3.5 border border-white/40 text-white font-semibold text-base rounded-lg hover:bg-white/10 transition-colors duration-200"
               >
                 {slides[current].cta2}
               </motion.a>
@@ -122,16 +120,19 @@ export default function Hero() {
         </AnimatePresence>
       </div>
 
-      {/* Scroll indicator */}
-      <motion.div
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 text-white/60"
-        animate={{ y: [0, 8, 0] }}
-        transition={{ duration: 1.5, repeat: Infinity }}
-      >
-        <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
-        </svg>
-      </motion.div>
+      {/* Slide indicators */}
+      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex items-center gap-2 z-10">
+        {slides.map((_, index) => (
+          <button
+            key={index}
+            onClick={() => setCurrent(index)}
+            aria-label={`Go to slide ${index + 1}`}
+            className={`h-1.5 rounded-full transition-all duration-300 ${
+              index === current ? "w-8 bg-white" : "w-4 bg-white/40 hover:bg-white/60"
+            }`}
+          />
+        ))}
+      </div>
     </section>
   );
 }
