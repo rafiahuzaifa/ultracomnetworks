@@ -1,4 +1,16 @@
 // src/app/legal/notice-of-cookies/page.tsx
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Cookie Notice",
+  description: "Learn how Ultracom Networks uses cookies on its website and how you can manage your preferences.",
+  alternates: { canonical: "/notice-of-cookies" },
+  openGraph: {
+    title: "Cookie Notice",
+    description: "Learn how Ultracom Networks uses cookies on its website and how you can manage your preferences.",
+  },
+};
+
 export default function NoticeOfCookies() {
   return (
     <div className="min-h-screen bg-white py-20 px-6">

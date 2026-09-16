@@ -1,7 +1,19 @@
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Complete Brand Identity Guide for Growing Businesses",
+  description: "A practical guide to building a strong, story-driven brand identity for small and growing businesses.",
+  alternates: { canonical: "/blog/branding" },
+  openGraph: {
+    title: "Complete Brand Identity Guide for Growing Businesses",
+    description: "A practical guide to building a strong, story-driven brand identity for small and growing businesses.",
+  },
+};
+
 import Link from "next/link";
 import Image from "next/image";
 
-export const metadata = { title: "Complete Brand Identity Guide for Growing Businesses" };
+
 
 export default function Branding() {
   return (

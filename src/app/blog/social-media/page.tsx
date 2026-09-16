@@ -1,7 +1,19 @@
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Social Media Strategies That Actually Convert",
+  description: "Practical social media marketing tactics that drive real engagement and conversions, not just vanity metrics.",
+  alternates: { canonical: "/blog/social-media" },
+  openGraph: {
+    title: "Social Media Strategies That Actually Convert",
+    description: "Practical social media marketing tactics that drive real engagement and conversions, not just vanity metrics.",
+  },
+};
+
 import Link from "next/link";
 import Image from "next/image";
 
-export const metadata = { title: "Social Media Strategies That Actually Convert in 2025" };
+
 
 export default function SocialMedia() {
   return (

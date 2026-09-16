@@ -1,10 +1,20 @@
 // src/app/blogs/google-ads/page.tsx
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "5 Google Ads Mistakes That Are Burning Your Budget",
+  description: "Avoid these common Google Ads mistakes that quietly drain your ad spend without delivering results.",
+  alternates: { canonical: "/blog/google-ads" },
+  openGraph: {
+    title: "5 Google Ads Mistakes That Are Burning Your Budget",
+    description: "Avoid these common Google Ads mistakes that quietly drain your ad spend without delivering results.",
+  },
+};
+
 import Link from "next/link";
 import Image from "next/image";
 
-export const metadata = { 
-  title: "5 Google Ads Mistakes That Are Burning Your Budget" 
-};
+
 
 export default function GoogleAds() {
   return (

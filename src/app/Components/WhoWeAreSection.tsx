@@ -91,7 +91,7 @@ export default function WhoWeAreSection() {
             </div>
 
             {/* Core Values Grid */}
-            <div className="grid grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               {coreValues.map((value, index) => (
                 <motion.div
                   key={value.title}
@@ -101,11 +101,11 @@ export default function WhoWeAreSection() {
                   transition={{ delay: 0.1 * index }}
                   className="group p-4 rounded-2xl bg-white border border-slate-200 hover:border-blue-200 hover:shadow-lg hover:-translate-y-1 transition-all duration-300"
                 >
-                  <div className="flex items-center gap-3 mb-2">
-                    <div className="p-2 bg-blue-50 rounded-lg text-blue-600 group-hover:bg-blue-600 group-hover:text-white transition-colors">
+                  <div className="flex items-center gap-3 mb-2 min-w-0">
+                    <div className="p-2 bg-blue-50 rounded-lg text-blue-600 group-hover:bg-blue-600 group-hover:text-white transition-colors shrink-0">
                       {value.icon}
                     </div>
-                    <h3 className="font-bold text-slate-800">{value.title}</h3>
+                    <h3 className="font-bold text-slate-800 min-w-0">{value.title}</h3>
                   </div>
                   <p className="text-sm text-slate-500">{value.description}</p>
                 </motion.div>

@@ -33,16 +33,18 @@ export default function Footer() {
           <div className="lg:col-span-2">
             <div className="mb-8">
               <Link href="/" className="inline-block">
-                <div className="flex items-center gap-4 mb-6">
-                  <Image
-                    src="/logo.png"
-                    alt="Ultracom Networks"
-                    width={180}
-                    height={60}
-                    className="object-contain filter brightness-0 invert"
-                  />
+                <div className="flex flex-col sm:flex-row sm:items-center gap-3 mb-6">
+                  <div className="bg-white rounded-lg p-1.5 w-fit">
+                    <Image
+                      src="/logo.png"
+                      alt="Ultracom Networks"
+                      width={130}
+                      height={43}
+                      className="object-contain"
+                    />
+                  </div>
                   <div>
-                    <h2 className="text-xl font-bold tracking-tight">Ultracom Networks</h2>
+                    <h2 className="text-lg sm:text-xl font-bold tracking-tight">Ultracom Networks</h2>
                     <p className="text-sm text-slate-400">Enterprise IT Solutions</p>
                   </div>
                 </div>

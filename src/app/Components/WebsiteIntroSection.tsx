@@ -64,12 +64,12 @@ export default function WebsiteIntroSection() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: 0.08 * index }}
-                  className="flex items-center gap-3 p-3 rounded-xl border border-slate-200 hover:border-blue-200 hover:shadow-md hover:-translate-y-0.5 transition-all duration-200"
+                  className="flex items-center gap-2 sm:gap-3 p-3 rounded-xl border border-slate-200 hover:border-blue-200 hover:shadow-md hover:-translate-y-0.5 transition-all duration-200 min-w-0"
                 >
-                  <div className="p-1.5 bg-blue-50 rounded-lg text-blue-600">
+                  <div className="p-1.5 bg-blue-50 rounded-lg text-blue-600 shrink-0">
                     {feature.icon}
                   </div>
-                  <span className="font-medium text-slate-700 text-sm">{feature.text}</span>
+                  <span className="font-medium text-slate-700 text-sm min-w-0">{feature.text}</span>
                 </motion.div>
               ))}
             </div>

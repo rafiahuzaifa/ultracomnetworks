@@ -1,7 +1,19 @@
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Website Redesign Checklist: 50+ Must-Do Items",
+  description: "A comprehensive checklist covering everything to plan and execute before redesigning your business website.",
+  alternates: { canonical: "/blog/redesign" },
+  openGraph: {
+    title: "Website Redesign Checklist: 50+ Must-Do Items",
+    description: "A comprehensive checklist covering everything to plan and execute before redesigning your business website.",
+  },
+};
+
 import Link from "next/link";
 import Image from "next/image";
 
-export const metadata = { title: "Website Redesign Checklist 2025 – 50+ Must-Do Items" };
+
 
 export default function Redesign() {
   return (

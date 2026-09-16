@@ -1,4 +1,16 @@
 // src/app/legal/acceptable-use-policy/page.tsx
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Acceptable Use Policy",
+  description: "Read Ultracom Networks' Acceptable Use Policy outlining the rules and responsibilities for customers using our internet, network, and IT services.",
+  alternates: { canonical: "/accectable-policy" },
+  openGraph: {
+    title: "Acceptable Use Policy",
+    description: "Read Ultracom Networks' Acceptable Use Policy outlining the rules and responsibilities for customers using our internet, network, and IT services.",
+  },
+};
+
 export default function AcceptableUsePolicy() {
   return (
     <div className="min-h-screen bg-white py-20 px-6">

@@ -1,4 +1,16 @@
 // src/app/legal/privacy-policy/page.tsx
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Privacy Policy",
+  description: "Read how Ultracom Networks collects, uses, and protects your personal data.",
+  alternates: { canonical: "/privicy-policy" },
+  openGraph: {
+    title: "Privacy Policy",
+    description: "Read how Ultracom Networks collects, uses, and protects your personal data.",
+  },
+};
+
 export default function PrivacyPolicy() {
   return (
     <div className="min-h-screen bg-white py-20 px-6">

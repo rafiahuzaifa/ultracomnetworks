@@ -38,18 +38,18 @@ export default function ClientFooter() {
       )}
 
       {/* Interactive Newsletter Form */}
-      <form onSubmit={handleNewsletterSubmit} className="flex gap-2">
+      <form onSubmit={handleNewsletterSubmit} className="flex flex-col sm:flex-row gap-2">
         <input
           type="email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           placeholder="Enter your email"
           required
-          className="flex-1 px-4 py-2.5 bg-white/5 border border-white/10 rounded-xl focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 transition-all placeholder:text-slate-500 text-sm"
+          className="min-w-0 flex-1 px-4 py-2.5 bg-white/5 border border-white/10 rounded-xl focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 transition-all placeholder:text-slate-500 text-sm"
         />
         <button
           type="submit"
-          className="px-5 py-2.5 bg-blue-600 rounded-xl font-semibold hover:bg-blue-700 transition-colors duration-200 flex items-center gap-2 group text-sm"
+          className="px-5 py-2.5 bg-blue-600 rounded-xl font-semibold hover:bg-blue-700 transition-colors duration-200 flex items-center justify-center gap-2 group text-sm shrink-0"
         >
           Subscribe
           <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />

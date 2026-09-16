@@ -1,7 +1,19 @@
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "How We Make PKR 30K/Month with Email Marketing",
+  description: "A real case study on generating consistent monthly revenue through targeted email marketing campaigns.",
+  alternates: { canonical: "/blog/email-marketing" },
+  openGraph: {
+    title: "How We Make PKR 30K/Month with Email Marketing",
+    description: "A real case study on generating consistent monthly revenue through targeted email marketing campaigns.",
+  },
+};
+
 import Link from "next/link";
 import Image from "next/image";
 
-export const metadata = { title: "How We Make $30K/Month with Email Marketing" };
+
 
 export default function EmailMarketing() {
   return (

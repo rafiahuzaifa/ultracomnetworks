@@ -1,7 +1,19 @@
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Why Every Business Needs a Professional Website",
+  description: "The business case for investing in a professional website — credibility, reach, and measurable growth.",
+  alternates: { canonical: "/blog/professional-website" },
+  openGraph: {
+    title: "Why Every Business Needs a Professional Website",
+    description: "The business case for investing in a professional website — credibility, reach, and measurable growth.",
+  },
+};
+
 import Link from "next/link";
 import Image from "next/image";
 
-export const metadata = { title: "Why Every Business Needs a Professional Website in 2025" };
+
 
 export default function ProfessionalWebsite() {
   return (

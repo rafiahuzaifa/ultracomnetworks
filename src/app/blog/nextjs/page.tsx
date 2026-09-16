@@ -1,7 +1,19 @@
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Next.js: The Secret to Lightning-Fast Websites",
+  description: "Why Next.js delivers dramatically faster, more reliable websites than traditional web development approaches.",
+  alternates: { canonical: "/blog/nextjs" },
+  openGraph: {
+    title: "Next.js: The Secret to Lightning-Fast Websites",
+    description: "Why Next.js delivers dramatically faster, more reliable websites than traditional web development approaches.",
+  },
+};
+
 import Link from "next/link";
 import Image from "next/image";
 
-export const metadata = { title: "Next.js 14: The Secret to Lightning-Fast Websites" };
+
 
 export default function NextJS() {
   return (

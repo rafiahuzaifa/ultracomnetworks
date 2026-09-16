@@ -1,7 +1,19 @@
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Google Ranking Factors: What Actually Matters",
+  description: "Cut through the noise — the SEO ranking factors that genuinely move the needle for your search visibility.",
+  alternates: { canonical: "/blog/seo" },
+  openGraph: {
+    title: "Google Ranking Factors: What Actually Matters",
+    description: "Cut through the noise — the SEO ranking factors that genuinely move the needle for your search visibility.",
+  },
+};
+
 import Link from "next/link";
 import Image from "next/image";
 
-export const metadata = { title: "Google Ranking Factors 2025 – What Actually Matters" };
+
 
 export default function SEO() {
   return (

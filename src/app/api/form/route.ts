@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import nodemailer from "nodemailer";
+import { GoogleGenAI } from "@google/genai";
 
 // HTML escape to prevent XSS in email content
 function escapeHtml(str: string): string {
@@ -39,6 +40,62 @@ console.log("Email Config:", {
   user: process.env.EMAIL_USER,
   pass: process.env.EMAIL_PASS ? "***hidden***" : "NOT SET",
 });
+
+// --- AI lead automation (skips silently if GEMINI_API_KEY is not set) ---
+const gemini = process.env.GEMINI_API_KEY
+  ? new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY })
+  : null;
+
+async function generateLeadSummary(data: {
+  name: string;
+  email: string;
+  phone?: string;
+  company?: string;
+  service?: string;
+  message: string;
+}): Promise<string | null> {
+  if (!gemini) return null;
+  try {
+    const response = await gemini.models.generateContent({
+      model: "gemini-3.6-flash",
+      contents: `Name: ${data.name}\nCompany: ${data.company || "N/A"}\nService interested: ${data.service || "Not specified"}\nMessage: ${data.message}`,
+      config: {
+        systemInstruction:
+          "You triage inbound leads for Ultracom Networks, a Karachi-based enterprise IT/ISP company. Given a form submission, write a short internal note for the sales team: 1) likely service interest, 2) urgency (low/medium/high) with a one-phrase reason, 3) one suggested next step. Keep it under 4 short lines, plain text, no headers.",
+        maxOutputTokens: 150,
+        thinkingConfig: { thinkingBudget: 0 },
+      },
+    });
+    return response.text || null;
+  } catch (err) {
+    console.error("AI lead summary error:", err);
+    return null;
+  }
+}
+
+async function generateAutoReply(data: {
+  name: string;
+  service?: string;
+  message: string;
+}): Promise<string | null> {
+  if (!gemini) return null;
+  try {
+    const response = await gemini.models.generateContent({
+      model: "gemini-3.6-flash",
+      contents: `Customer name: ${data.name}\nService interested: ${data.service || "general inquiry"}\nTheir message: ${data.message}`,
+      config: {
+        systemInstruction:
+          "You write brief, warm auto-reply emails on behalf of Ultracom Networks (a Karachi-based enterprise IT/ISP company) confirming receipt of a website inquiry. Reference what the person asked about in one sentence. Mention our team will follow up within 24 hours. Sign off as 'The Ultracom Networks Team'. 3-5 sentences total, plain text, no subject line, no placeholders.",
+        maxOutputTokens: 200,
+        thinkingConfig: { thinkingBudget: 0 },
+      },
+    });
+    return response.text || null;
+  } catch (err) {
+    console.error("AI auto-reply error:", err);
+    return null;
+  }
+}
 
 export async function POST(req: Request) {
   try {
@@ -133,6 +190,12 @@ export async function POST(req: Request) {
       ? `Appointment Request: ${escapeHtml(service)} - ${escapeHtml(name)}`
       : `Website Inquiry from ${escapeHtml(name)}`;
 
+    // AI automation: lead triage summary (for sales) + instant personalized auto-reply (for customer)
+    const [leadSummary, autoReply] = await Promise.all([
+      generateLeadSummary({ name, email, phone, company, service, message }),
+      generateAutoReply({ name, service, message }),
+    ]);
+
     const mailResult = await transporter.sendMail({
       from: `"Website Form" <${process.env.EMAIL_USER}>`,
       to: process.env.RECIPIENT_EMAIL || process.env.EMAIL_USER,
@@ -146,11 +209,28 @@ export async function POST(req: Request) {
         ${company ? `<p><strong>Company:</strong> ${escapeHtml(company)}</p>` : ""}
         ${service ? `<p><strong>Service:</strong> ${escapeHtml(service)}</p>` : ""}
         <p><strong>Message:</strong><br>${escapeHtml(message).replace(/\n/g, "<br>")}</p>
+        ${leadSummary ? `<hr><p><strong>🤖 AI Lead Summary:</strong><br>${escapeHtml(leadSummary).replace(/\n/g, "<br>")}</p>` : ""}
       `,
     });
 
     console.log("Email sent successfully to:", process.env.RECIPIENT_EMAIL || process.env.EMAIL_USER);
     console.log("Message ID:", mailResult.messageId);
+
+    // Send instant auto-reply to the customer, if AI generated one
+    if (autoReply) {
+      try {
+        await transporter.sendMail({
+          from: `"Ultracom Networks" <${process.env.EMAIL_USER}>`,
+          to: email,
+          subject: "We've received your message - Ultracom Networks",
+          html: `<p>${escapeHtml(autoReply).replace(/\n/g, "<br>")}</p>`,
+        });
+        console.log("AI auto-reply sent to:", email);
+      } catch (autoReplyErr) {
+        console.error("Auto-reply send error:", autoReplyErr);
+        // Don't fail the request if only the auto-reply fails - the lead is already captured above
+      }
+    }
 
     return NextResponse.json({ message: "Message sent successfully!" });
   } catch (error: any) {
