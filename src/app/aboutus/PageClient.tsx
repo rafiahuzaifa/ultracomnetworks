@@ -298,7 +298,7 @@ export default function AboutUs() {
       </section>
 
       {/* ==== MISSION & VISION SECTION ==== */}
-      <section id="mission" className="py-32 bg-gradient-to-br from-slate-50 via-white to-cyan-50">
+      <section id="mission" className="py-32 bg-gradient-to-br from-slate-50 via-white to-cyan-50 overflow-hidden">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 40 }}
