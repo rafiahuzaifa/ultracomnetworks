@@ -8,6 +8,7 @@ import Navbar from "@/app/Components/Navbar";
 import Footer from "@/app/Components/Footer";
 import Whatsupbutton from "@/app/Components/Whatsupbutton";
 import AIChatWidget from "@/app/Components/AIChatWidget";
+import { GoogleAnalytics } from "@next/third-parties/google";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 const jakarta = Plus_Jakarta_Sans({ subsets: ["latin"], variable: "--font-heading" });
@@ -103,6 +104,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <Whatsupbutton />
         <AIChatWidget />
       </body>
+      <GoogleAnalytics gaId="G-XWJRHTE3T1" />
     </html>
   );
 }
