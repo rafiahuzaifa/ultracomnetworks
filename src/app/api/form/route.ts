@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import nodemailer from "nodemailer";
 import { GoogleGenAI } from "@google/genai";
+import { sendWhatsAppConfirmation } from "@/app/lib/whatsapp";
 
 // HTML escape to prevent XSS in email content
 function escapeHtml(str: string): string {
@@ -230,6 +231,12 @@ export async function POST(req: Request) {
         console.error("Auto-reply send error:", autoReplyErr);
         // Don't fail the request if only the auto-reply fails - the lead is already captured above
       }
+    }
+
+    // Send WhatsApp confirmation, if a phone number was provided and WhatsApp is configured
+    if (phone) {
+      const sent = await sendWhatsAppConfirmation({ phone, name, topic: service || "your inquiry" });
+      if (sent) console.log("WhatsApp confirmation sent to:", phone);
     }
 
     return NextResponse.json({ message: "Message sent successfully!" });
