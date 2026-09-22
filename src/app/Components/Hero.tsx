@@ -5,7 +5,17 @@ import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import { ChevronRight, ShieldCheck } from "lucide-react";
 
-const slides = [
+export type HeroSlideData = {
+  image: string;
+  title: string;
+  subtitle: string;
+  cta1: string;
+  cta2: string;
+  cta1Link?: string;
+  cta2Link?: string;
+};
+
+const defaultSlides: HeroSlideData[] = [
   {
     image: "/hero1-new.jpg",
     title: "Secure. Reliable. Connected.",
@@ -43,8 +53,14 @@ const slides = [
   },
 ];
 
-export default function Hero() {
+export default function Hero({ slides: cmsSlides }: { slides?: HeroSlideData[] }) {
+  const slides = cmsSlides && cmsSlides.length > 0 ? cmsSlides : defaultSlides;
   const [current, setCurrent] = useState(0);
+
+  // Reset to the first slide if the slide set itself changes (e.g. CMS content loads)
+  useEffect(() => {
+    setCurrent(0);
+  }, [slides.length]);
 
   // Auto-slide every 7 seconds
   useEffect(() => {
@@ -109,7 +125,7 @@ export default function Hero() {
 
             <div className="flex flex-col sm:flex-row gap-3 pt-4">
               <motion.a
-                href="/services"
+                href={slides[current].cta1Link || "/services"}
                 whileHover={{ y: -2 }}
                 whileTap={{ scale: 0.98 }}
                 className="inline-flex items-center justify-center px-7 py-3.5 bg-blue-600 text-white font-semibold text-base rounded-lg shadow-lg shadow-blue-600/40 hover:bg-blue-700 hover:shadow-xl hover:shadow-blue-600/50 transition-all duration-200 group"
@@ -118,7 +134,7 @@ export default function Hero() {
                 <ChevronRight className="ml-1.5 w-5 h-5 group-hover:translate-x-1 transition-transform" />
               </motion.a>
               <motion.a
-                href="/contactus"
+                href={slides[current].cta2Link || "/contactus"}
                 whileHover={{ y: -2 }}
                 whileTap={{ scale: 0.98 }}
                 className="inline-flex items-center justify-center px-7 py-3.5 border border-white/40 text-white font-semibold text-base rounded-lg backdrop-blur-sm hover:bg-white/10 hover:border-white/60 transition-all duration-200"

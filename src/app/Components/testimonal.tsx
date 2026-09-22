@@ -5,13 +5,27 @@ import { Star, Quote, Sparkles, TrendingUp, Award, Zap, ChevronLeft, ChevronRigh
 import { motion, AnimatePresence } from "framer-motion";
 import { useRef, useEffect, useState } from "react";
 
-export default function UltracomTestimonials() {
+export type TestimonialData = {
+  id: string | number;
+  name: string;
+  role?: string;
+  company?: string;
+  text: string;
+  avatar?: string;
+  service?: string;
+  rating?: number;
+  duration?: string;
+  results?: string[];
+  category?: string;
+};
+
+export default function UltracomTestimonials({ clients: cmsClients }: { clients?: TestimonialData[] }) {
   const scrollRef = useRef<HTMLDivElement>(null);
   const [isPaused, setIsPaused] = useState(false);
   const [activeCategory, setActiveCategory] = useState("all");
 
-  // Enhanced client testimonials data
-  const clients = [
+  // Enhanced client testimonials data (fallback used until real CMS testimonials are added)
+  const defaultClients = [
     {
       id: 1,
       name: "Bilal Ahmed",
@@ -92,8 +106,10 @@ export default function UltracomTestimonials() {
     }
   ];
 
-  const filteredClients = activeCategory === "all" 
-    ? clients 
+  const clients = cmsClients && cmsClients.length > 0 ? cmsClients : defaultClients;
+
+  const filteredClients = activeCategory === "all"
+    ? clients
     : clients.filter(client => client.category === activeCategory);
 
   const categories = [
@@ -131,7 +147,7 @@ export default function UltracomTestimonials() {
     return () => clearInterval(interval);
   }, [isPaused]);
 
-  const getCategoryColor = (category: string) => {
+  const getCategoryColor = (category?: string) => {
     switch(category) {
       case "connectivity": return "text-blue-400";
       case "digital": return "text-purple-400";
@@ -269,7 +285,7 @@ export default function UltracomTestimonials() {
 
                   {/* Results Badges */}
                   <div className="flex flex-wrap gap-2 mb-6">
-                    {client.results.map((result, i) => (
+                    {(client.results || []).map((result, i) => (
                       <span key={i} className="px-3 py-1 bg-white/5 rounded-lg text-xs font-medium text-slate-300">
                         {result}
                       </span>
@@ -304,7 +320,7 @@ export default function UltracomTestimonials() {
                   {/* Rating */}
                   <div className="flex items-center justify-between mt-5 pt-5 border-t border-white/10">
                     <div className="flex gap-0.5">
-                      {[...Array(client.rating)].map((_, i) => (
+                      {[...Array(client.rating ?? 5)].map((_, i) => (
                         <Star key={i} className="w-4 h-4 fill-blue-400 text-blue-400" />
                       ))}
                     </div>

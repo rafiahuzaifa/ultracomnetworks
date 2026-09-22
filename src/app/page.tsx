@@ -1,25 +1,8 @@
-"use client";
-import Hero from "@/app/Components/Hero";
-import WhoWeAreSection from "@/app/Components/WhoWeAreSection"
-import Services from "@/app/Components/Services";
-import WebsiteIntroSection from "./Components/WebsiteIntroSection";
-import TestimonialsPage from "./Components/testimonal";
+import HomeClient from "./HomeClient";
+import { getHomepageContent } from "./lib/getHomepageContent";
 
+export default async function Page() {
+  const { heroSlides, whoWeAre, testimonials } = await getHomepageContent();
 
-
-
-export default function Page() {
-  return (
-    <div className="min-h-screen bg-white text-slate-800">
-    
-      <main>
-        <Hero />
-        <WhoWeAreSection />
-        <Services />
-        <WebsiteIntroSection />
-        <TestimonialsPage />
-      </main>
-    
-    </div>
-  );
+  return <HomeClient heroSlides={heroSlides} whoWeAre={whoWeAre} testimonials={testimonials} />;
 }
