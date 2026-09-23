@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
-import nodemailer from "nodemailer";
 import { GoogleGenAI } from "@google/genai";
 import { sendWhatsAppConfirmation } from "@/app/lib/whatsapp";
+import { sendEmail } from "@/app/lib/email";
 
 // HTML escape to prevent XSS in email content
 function escapeHtml(str: string): string {
@@ -20,27 +20,7 @@ function isValidEmail(email: string): boolean {
 
 const MAX_FILE_SIZE = 10 * 1024 * 1024; // 10MB
 
-// Nodemailer transporter
-const transporter = nodemailer.createTransport({
-  host: process.env.EMAIL_HOST || "mail.ultracomnetworks.pk",
-  port: Number(process.env.EMAIL_PORT) || 587,
-  secure: false,
-  auth: {
-    user: process.env.EMAIL_USER || "sales@ultracomnetworks.pk",
-    pass: process.env.EMAIL_PASS || "",
-  },
-  tls: { rejectUnauthorized: false },
-  connectionTimeout: 60000,
-  greetingTimeout: 30000,
-  socketTimeout: 60000,
-});
-
-console.log("Email Config:", {
-  host: process.env.EMAIL_HOST,
-  port: process.env.EMAIL_PORT,
-  user: process.env.EMAIL_USER,
-  pass: process.env.EMAIL_PASS ? "***hidden***" : "NOT SET",
-});
+console.log("Email sender:", process.env.RESEND_API_KEY ? "Resend" : "SMTP (fallback)");
 
 // --- AI lead automation (skips silently if GEMINI_API_KEY is not set) ---
 const gemini = process.env.GEMINI_API_KEY
@@ -138,9 +118,9 @@ export async function POST(req: Request) {
 
       const resumeBuffer = Buffer.from(await resume.arrayBuffer());
 
-      const resumeResult = await transporter.sendMail({
-        from: `"Career Form" <${process.env.EMAIL_USER}>`,
-        to: process.env.RECIPIENT_EMAIL || process.env.EMAIL_USER,
+      const resumeResult = await sendEmail({
+        fromName: "Career Form",
+        to: process.env.RECIPIENT_EMAIL || process.env.EMAIL_USER || "sales@ultracomnetworks.pk",
         replyTo: email,
         subject: `Job Application: ${escapeHtml(name)} (${escapeHtml(position)})`,
         html: `
@@ -161,7 +141,7 @@ export async function POST(req: Request) {
       });
 
       console.log("Career email sent to:", process.env.RECIPIENT_EMAIL || process.env.EMAIL_USER);
-      console.log("Message ID:", resumeResult.messageId);
+      console.log("Message ID:", resumeResult.id);
 
       return NextResponse.json({ message: "Application sent successfully!" });
     }
@@ -197,9 +177,9 @@ export async function POST(req: Request) {
       generateAutoReply({ name, service, message }),
     ]);
 
-    const mailResult = await transporter.sendMail({
-      from: `"Website Form" <${process.env.EMAIL_USER}>`,
-      to: process.env.RECIPIENT_EMAIL || process.env.EMAIL_USER,
+    const mailResult = await sendEmail({
+      fromName: "Website Form",
+      to: process.env.RECIPIENT_EMAIL || process.env.EMAIL_USER || "sales@ultracomnetworks.pk",
       replyTo: email,
       subject,
       html: `
@@ -215,13 +195,13 @@ export async function POST(req: Request) {
     });
 
     console.log("Email sent successfully to:", process.env.RECIPIENT_EMAIL || process.env.EMAIL_USER);
-    console.log("Message ID:", mailResult.messageId);
+    console.log("Message ID:", mailResult.id);
 
     // Send instant auto-reply to the customer, if AI generated one
     if (autoReply) {
       try {
-        await transporter.sendMail({
-          from: `"Ultracom Networks" <${process.env.EMAIL_USER}>`,
+        await sendEmail({
+          fromName: "Ultracom Networks",
           to: email,
           subject: "We've received your message - Ultracom Networks",
           html: `<p>${escapeHtml(autoReply).replace(/\n/g, "<br>")}</p>`,
