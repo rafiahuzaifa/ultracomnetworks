@@ -18,7 +18,7 @@ import Image from "next/image";
 export default function Branding() {
   return (
     <article className="max-w-3xl mx-auto px-6 py-16">
-      <Link href="/blogs" className="text-blue-600 hover:text-blue-800 mb-10 inline-block font-medium">← All Articles</Link>
+      <Link href="/blog" className="text-blue-600 hover:text-blue-800 mb-10 inline-block font-medium">← All Articles</Link>
 
       <div className="w-full mb-10 rounded-2xl overflow-hidden shadow-lg">
         <Image src="https://images.unsplash.com/photo-1545239351-1141bd82e8a6?auto=format&fit=crop&w=1200&q=80" alt="Branding" width={1200} height={500} className="w-full h-72 object-cover" />

@@ -14,7 +14,9 @@ export default function ContactPage() {
     setStatus("loading");
     setMessage("");
 
-    const formData = new FormData(e.currentTarget);
+    // Keep a reference: React clears e.currentTarget once the handler awaits.
+    const form = e.currentTarget;
+    const formData = new FormData(form);
     const data = {
       name: formData.get("name") as string,
       company: formData.get("company") as string,
@@ -35,7 +37,7 @@ export default function ContactPage() {
       if (res.ok) {
         setStatus("success");
         setMessage("Your message has been sent! Thank you for choosing us.");
-        e.currentTarget.reset();
+        form.reset();
       } else {
         setStatus("error");
         setMessage(result.error || "Failed to send message.");

@@ -18,7 +18,7 @@ import Image from "next/image";
 export default function ProfessionalWebsite() {
   return (
     <article className="max-w-3xl mx-auto px-6 py-16">
-      <Link href="/blogs" className="text-blue-600 hover:text-blue-800 mb-10 inline-block font-medium">
+      <Link href="/blog" className="text-blue-600 hover:text-blue-800 mb-10 inline-block font-medium">
         ← All Articles
       </Link>
 

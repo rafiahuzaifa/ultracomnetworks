@@ -42,7 +42,7 @@ export default function NetworkSupport() {
       {/* Hero Section */}
       <div className="relative w-full h-[55vh] md:h-[70vh]">
         <img
-          src="/mock-devices.jpg"
+          src="/mock-device.jpg"
           alt="Network Support"
           className="w-full h-full object-cover"
         />
