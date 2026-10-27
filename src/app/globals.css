@@ -82,3 +82,20 @@ button {
 .scrollbar-hide::-webkit-scrollbar {
   display: none;
 }
+
+/* PWA: with viewport-fit=cover, keep content clear of notches / rounded corners in landscape.
+   The insets are 0 on devices without them, so this is a no-op elsewhere. */
+body {
+  padding-left: env(safe-area-inset-left);
+  padding-right: env(safe-area-inset-right);
+}
+
+/* Installed app: no rubber-band pull-to-refresh glow and no grey tap flash, like a native app. */
+@media (display-mode: standalone) {
+  html {
+    overscroll-behavior-y: none;
+  }
+  body {
+    -webkit-tap-highlight-color: transparent;
+  }
+}

@@ -8,6 +8,7 @@ import {
   Menu, X, Phone, Calendar, ChevronDown, Search, ChevronRight,
   Globe, Shield, Zap, Users, Mail, MapPin, Clock, Bot
 } from "lucide-react";
+import InstallButton from "@/app/Components/pwa/InstallButton";
 
 export default function Navbar() {
   const [activeDropdown, setActiveDropdown] = useState<null | "services" | "about">(null);
@@ -325,6 +326,8 @@ export default function Navbar() {
             <button className="p-2.5 rounded-full hover:bg-slate-100 transition-colors duration-200">
               <Search className="w-5 h-5 text-slate-500" />
             </button>
+
+            <InstallButton />
           </div>
 
           {/* Mobile Menu Button */}
@@ -548,6 +551,7 @@ export default function Navbar() {
                       <Calendar className="w-4 h-4" />
                       Schedule Free Consultation
                     </button>
+                    <InstallButton variant="mobile" onClick={() => setMobileOpen(false)} />
                   </div>
                 </div>
 
