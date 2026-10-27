@@ -28,7 +28,7 @@ export default function AIChatbotDevelopment() {
         {/* BANNER IMAGE */}
         <div className="relative w-full h-[420px] mt-12 rounded-2xl overflow-hidden shadow-xl">
           <Image
-            src="/ai-chatbot-banner.jpg"
+            src="/services.webp"
             alt="AI Chatbot Solution"
             fill
             className="object-cover"

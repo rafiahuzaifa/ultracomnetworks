@@ -46,9 +46,9 @@ export default function ServicesPage() {
     { title: "Social Media Marketing", subtitle: "Grow your business online", href: "/services/social-media-marketing", category: "web", image: "/socialmedia.jpg" },
 
     // AI & Automation Services
-    { title: "AI Chatbot Development", subtitle: "Smart conversational bots for support & sales", href: "/services/ai-chatbot", category: "ai", image: "/ai-chatbot-banner.jpg" },
-    { title: "AI Applications", subtitle: "Custom ML & AI-powered business solutions", href: "/services/ai-applications", category: "ai", image: "/ai-chatbot-banner.jpg" },
-    { title: "AI Agents", subtitle: "Autonomous agents for workflow automation", href: "/services/ai-agents", category: "ai", image: "/ai-chatbot-banner.jpg" },
+    { title: "AI Chatbot Development", subtitle: "Smart conversational bots for support & sales", href: "/services/ai-chatbot", category: "ai", image: "/services.webp" },
+    { title: "AI Applications", subtitle: "Custom ML & AI-powered business solutions", href: "/services/ai-applications", category: "ai", image: "/digital-solutions.webp" },
+    { title: "AI Agents", subtitle: "Autonomous agents for workflow automation", href: "/services/ai-agents", category: "ai", image: "/digital-solutions.webp" },
   ];
 
   const filteredServices = useMemo(() => {

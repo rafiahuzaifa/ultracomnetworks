@@ -20,9 +20,9 @@ const allServices = [
   { title: "Branding & Identity", subtitle: "Logo + brand kits", href: "/services/branding", category: "web", image: "/branding.jpg" },
   { title: "Content Creation", subtitle: "Professional media content", href: "/services/content", category: "web", image: "/content.jpeg" },
   { title: "Social Media Marketing", subtitle: "Grow your online brand", href: "/services/social-media-marketing", category: "web", image: "/socialmedia.jpg" },
-  { title: "AI Chatbot Development", subtitle: "Smart conversational bots", href: "/services/ai-chatbot", category: "ai", image: "/ai-chatbot-banner.jpg" },
-  { title: "AI Applications", subtitle: "Custom ML & AI solutions", href: "/services/ai-applications", category: "ai", image: "/ai-chatbot-banner.jpg" },
-  { title: "AI Agents", subtitle: "Autonomous business agents", href: "/services/ai-agents", category: "ai", image: "/ai-chatbot-banner.jpg" },
+  { title: "AI Chatbot Development", subtitle: "Smart conversational bots", href: "/services/ai-chatbot", category: "ai", image: "/services.webp" },
+  { title: "AI Applications", subtitle: "Custom ML & AI solutions", href: "/services/ai-applications", category: "ai", image: "/digital-solutions.webp" },
+  { title: "AI Agents", subtitle: "Autonomous business agents", href: "/services/ai-agents", category: "ai", image: "/digital-solutions.webp" },
 ];
 
 export default function ServicesCarousel() {
