@@ -17,6 +17,7 @@ import {
   Sparkles
 } from "lucide-react";
 import { useState } from "react";
+import { useNewsletterSignup } from "@/app/lib/newsletter";
 
 const blogs = [
   { 
@@ -243,6 +244,8 @@ function BlogCard({ blog }: BlogCardProps) {
 export default function BlogPage() {
   const [selectedCategory, setSelectedCategory] = useState("All Topics");
   const [searchQuery, setSearchQuery] = useState("");
+  const [newsletterEmail, setNewsletterEmail] = useState("");
+  const newsletter = useNewsletterSignup();
   const featuredBlog = blogs.find(blog => blog.featured) || blogs[0];
 
   const filteredBlogs = blogs.filter(blog => {
@@ -467,7 +470,7 @@ export default function BlogPage() {
       </section>
 
       {/* Newsletter Section */}
-      <section className="py-20 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900">
+      <section id="newsletter" className="py-20 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 scroll-mt-24">
         <div className="max-w-4xl mx-auto px-6 lg:px-8 text-center">
           <div className="bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-sm rounded-3xl p-12 border border-white/10">
             <BookOpen className="w-16 h-16 text-cyan-400 mx-auto mb-6" />
@@ -477,19 +480,35 @@ export default function BlogPage() {
             <p className="text-slate-300 mb-8 max-w-2xl mx-auto text-lg">
               Get the latest articles, case studies, and industry trends delivered directly to your inbox.
             </p>
-            <form className="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
+            <form
+              onSubmit={async (e) => {
+                e.preventDefault();
+                if (await newsletter.subscribe(newsletterEmail)) setNewsletterEmail("");
+              }}
+              className="flex flex-col sm:flex-row gap-4 max-w-md mx-auto"
+            >
               <input
                 type="email"
+                required
+                aria-label="Email address"
+                value={newsletterEmail}
+                onChange={(e) => setNewsletterEmail(e.target.value)}
                 placeholder="Enter your email"
                 className="flex-1 px-6 py-4 bg-white/10 border border-white/20 rounded-xl text-white placeholder-slate-400 focus:outline-none focus:border-cyan-500 transition-colors"
               />
               <button
                 type="submit"
-                className="px-8 py-4 bg-gradient-to-r from-cyan-600 to-blue-600 text-white font-bold rounded-xl hover:from-cyan-500 hover:to-blue-500 hover:shadow-xl hover:shadow-cyan-500/30 transition-all duration-300"
+                disabled={newsletter.status === "loading"}
+                className="px-8 py-4 bg-gradient-to-r from-cyan-600 to-blue-600 text-white font-bold rounded-xl hover:from-cyan-500 hover:to-blue-500 hover:shadow-xl hover:shadow-cyan-500/30 transition-all duration-300 disabled:opacity-60"
               >
-                Subscribe
+                {newsletter.status === "loading" ? "Subscribing..." : "Subscribe"}
               </button>
             </form>
+            {newsletter.message && (
+              <p role="status" className={`mt-4 text-sm font-medium ${newsletter.status === "success" ? "text-emerald-400" : "text-red-400"}`}>
+                {newsletter.message}
+              </p>
+            )}
             <p className="text-slate-400 text-sm mt-4">
               No spam. Unsubscribe at any time.
             </p>

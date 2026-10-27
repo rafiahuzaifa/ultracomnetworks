@@ -678,7 +678,7 @@ export default function AboutUs() {
                   <ArrowRight className="w-5 h-5" />
                 </Link>
                 <Link
-                  href="/newsletter"
+                  href="/blog#newsletter"
                   className="inline-flex items-center gap-3 px-8 py-4 bg-white text-cyan-700 font-bold rounded-xl border-2 border-cyan-200 hover:border-cyan-300 hover:bg-cyan-50 transition-all duration-300"
                 >
                   Subscribe to Newsletter

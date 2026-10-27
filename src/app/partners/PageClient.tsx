@@ -1,18 +1,17 @@
 "use client";
 
-import Image from "next/image";
 import { motion } from "framer-motion";
 
 const partners = [
-  { name: "Cisco", logo: "/partners/cisco.png" },
-  { name: "MikroTik", logo: "/partners/mikrotik.png" },
-  { name: "Juniper", logo: "/partners/juniper.png" },
-  { name: "Ubiquiti", logo: "/partners/ubiquiti.png" },
-  { name: "Huawei", logo: "/partners/huawei.png" },
-  { name: "HP Enterprise", logo: "/partners/hpe.png" },
-  { name: "Dell", logo: "/partners/dell.png" },
-  { name: "Fortinet", logo: "/partners/fortinet.png" },
-  { name: "VMware", logo: "/partners/vmware.png" },
+  { name: "Cisco", category: "Networking" },
+  { name: "MikroTik", category: "Routing" },
+  { name: "Juniper", category: "Networking" },
+  { name: "Ubiquiti", category: "Wireless" },
+  { name: "Huawei", category: "Telecom" },
+  { name: "HP Enterprise", category: "Servers" },
+  { name: "Dell", category: "Servers & Storage" },
+  { name: "Fortinet", category: "Security" },
+  { name: "VMware", category: "Virtualization" },
 ];
 
 export default function PartnersPage() {
@@ -53,15 +52,14 @@ export default function PartnersPage() {
             key={index}
             whileHover={{ y: -8, scale: 1.06 }}
             transition={{ duration: 0.3 }}
-            className="group bg-white/40 backdrop-blur-xl border border-white/30 shadow-lg hover:shadow-2xl rounded-2xl p-6 flex items-center justify-center h-40 transition-all"
+            className="group bg-white/40 backdrop-blur-xl border border-white/30 shadow-lg hover:shadow-2xl rounded-2xl p-6 flex flex-col items-center justify-center text-center h-40 transition-all"
           >
-            <Image
-              src={p.logo}
-              alt={p.name}
-              width={140}
-              height={60}
-              className="object-contain opacity-80 group-hover:opacity-100 transition-all duration-300"
-            />
+            <span className="text-xl font-bold tracking-tight text-slate-800 group-hover:text-blue-700 transition-colors duration-300">
+              {p.name}
+            </span>
+            <span className="mt-2 text-[11px] font-semibold uppercase tracking-widest text-slate-500">
+              {p.category}
+            </span>
           </motion.div>
         ))}
       </div>

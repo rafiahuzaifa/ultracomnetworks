@@ -2,10 +2,12 @@
 
 import { ArrowRight, ArrowUp } from "lucide-react";
 import { useEffect, useState } from "react";
+import { useNewsletterSignup } from "@/app/lib/newsletter";
 
 export default function ClientFooter() {
   const [email, setEmail] = useState("");
   const [showTop, setShowTop] = useState(false);
+  const newsletter = useNewsletterSignup();
 
   useEffect(() => {
     const handleScroll = () => setShowTop(window.scrollY > 400);
@@ -13,11 +15,9 @@ export default function ClientFooter() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const handleNewsletterSubmit = (e: React.FormEvent) => {
+  const handleNewsletterSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Handle newsletter subscription
-    console.log("Subscribed:", email);
-    setEmail("");
+    if (await newsletter.subscribe(email)) setEmail("");
   };
 
   const scrollToTop = () => {
@@ -44,17 +44,24 @@ export default function ClientFooter() {
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           placeholder="Enter your email"
+          aria-label="Email address"
           required
           className="min-w-0 flex-1 px-4 py-2.5 bg-white/5 border border-white/10 rounded-xl focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 transition-all placeholder:text-slate-500 text-sm"
         />
         <button
           type="submit"
-          className="px-5 py-2.5 bg-blue-600 rounded-xl font-semibold hover:bg-blue-700 transition-colors duration-200 flex items-center justify-center gap-2 group text-sm shrink-0"
+          disabled={newsletter.status === "loading"}
+          className="px-5 py-2.5 bg-blue-600 rounded-xl font-semibold hover:bg-blue-700 transition-colors duration-200 flex items-center justify-center gap-2 group text-sm shrink-0 disabled:opacity-60"
         >
-          Subscribe
+          {newsletter.status === "loading" ? "Subscribing..." : "Subscribe"}
           <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
         </button>
       </form>
+      {newsletter.message && (
+        <p role="status" className={`mt-2 text-xs font-medium ${newsletter.status === "success" ? "text-emerald-400" : "text-red-400"}`}>
+          {newsletter.message}
+        </p>
+      )}
     </>
   );
 }

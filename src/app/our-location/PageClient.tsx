@@ -22,7 +22,7 @@ export default function OurLocation() {
       {/* Hero Section */}
       <section className="relative h-screen bg-gradient-to-br from-slate-900 via-blue-950 to-indigo-950 text-white overflow-hidden font-poppins">
         <Image
-          src="/locations-hero.jpg"
+          src="/businessmeeting.jpg"
           alt="UltraCom Head Office Karachi"
           fill
           className="object-cover opacity-20"

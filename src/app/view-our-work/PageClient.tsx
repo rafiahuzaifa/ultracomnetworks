@@ -9,26 +9,26 @@ export default function ViewOurWork() {
     {
       title: "Corporate Website Design",
       subtitle: "Next.js • Tailwind • Sanity CMS",
-      image: "/portfolio1.jpg",
-      link: "#"
+      image: "/webdevlopment2.jpg",
+      link: "/services/webdevlopment2"
     },
     {
       title: "AI Chatbot Automation",
       subtitle: "WhatsApp + Website Support Bot",
-      image: "/portfolio2.jpg",
-      link: "#"
+      image: "/services.webp",
+      link: "/services/ai-chatbot"
     },
     {
       title: "E-Commerce Storefront",
       subtitle: "Full Stack + Payment Integration",
-      image: "/portfolio3.jpg",
-      link: "#"
+      image: "/branding.jpg",
+      link: "/website-development"
     },
     {
       title: "Digital Agency Web UI",
       subtitle: "Modern UI/UX Focused Branding",
-      image: "/portfolio4.jpg",
-      link: "#"
+      image: "/whoweare.jpg",
+      link: "/services/branding"
     },
   ];
 
@@ -79,7 +79,7 @@ export default function ViewOurWork() {
                   href={project.link}
                   className="inline-block mt-5 px-5 py-2 border border-[#0072CE] text-[#0072CE] rounded-lg hover:bg-[#E6F1FF] transition"
                 >
-                  View Case Study →
+                  Explore This Service →
                 </Link>
               </div>
             </motion.div>

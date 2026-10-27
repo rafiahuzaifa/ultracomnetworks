@@ -12,7 +12,7 @@ export default function OurNetwork() {
       {/* Hero */}
       <section className="relative h-screen bg-gradient-to-br from-slate-900 via-blue-950 to-indigo-950 text-white overflow-hidden font-poppins">
         <Image
-          src="/network-bg.jpg"
+          src="/Worldmap.jpg"
           alt="UltraCom Network"
           fill
           className="object-cover opacity-20"
